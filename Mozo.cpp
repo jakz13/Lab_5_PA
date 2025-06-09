@@ -1,17 +1,23 @@
 #include "Mozo.h"
+#include "Venta.h"
+#include "List.h"
 
-Mozo::Mozo(int id, std::string nombre)
-    : Empleado(id, nombre), cantMesas(0), ventas(new List()) {}
+Mozo::Mozo(int id,string nombre){
+    this->id = id;
+    this->nombre = nombre;
+    this->cantMesas = 0;
+    this->ventasMesa = new List();
+}
 
 void Mozo::asignarVenta(Venta* v) {
-    ventas->add(v);
+    ventasMesa->add(v);
     cantMesas++;
 }
 
 void Mozo::agregarVentaAMozo(Venta* v) {
-    ventas->add(v);
+    ventasMesa->add(v);
 }
 
-std::string Mozo::nombreDelMozo() const {
-    return nombre;
+string Mozo::nombreDelMozo() const {
+    return this->nombre;
 }

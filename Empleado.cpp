@@ -1,12 +1,14 @@
 #include "Empleado.h"
 
-Empleado::Empleado(int id, std::string nombre)
-    : id(id), nombre(nombre) {}
-
-int Empleado::getId() const {
-    return id;
+Empleado::Empleado(int id,string nombre) {
+    this->id = id;
+    this->nombre = nombre;
 }
 
-std::string Empleado::getNombre() const {
-    return nombre;
+int Empleado::getId() const {
+    return this->id;
+}
+
+string Empleado::getNombre() const {
+    return this->nombre;
 }

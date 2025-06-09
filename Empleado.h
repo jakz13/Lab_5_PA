@@ -1,12 +1,18 @@
-#pragma once
-#include <string>
+#ifndef EMPLEADO_H
+#define EMPLEADO_H
+#include <iostream>
+using namespace std;
 
 class Empleado {
 protected:
     int id;
-    std::string nombre;
+    string nombre;
 public:
-    Empleado(int id, std::string nombre);
+    Empleado();
+    Empleado(int id, string nombre);
     int getId() const;
-    std::string getNombre() const;
+    string getNombre() const;
 };
+
+
+#endif
