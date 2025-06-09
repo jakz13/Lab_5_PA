@@ -11,4 +11,5 @@ public:
     std::string getTelefono() const;
     std::string getNombre() const;
     std::string getDireccion() const;
+    int coso;
 };
