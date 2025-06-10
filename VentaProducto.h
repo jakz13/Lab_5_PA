@@ -1,8 +1,9 @@
 #pragma once
 #include "Producto.h"
 #include "Venta.h"
+#include "DtProductoConsumido.h"
 
-class VentaProducto {
+class VentaProducto : public ICollectible {
 private:
     Producto* producto;
     Venta* venta;

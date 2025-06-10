@@ -1,6 +1,7 @@
 #pragma once
+#include "ICollection/collections/List.h"
 
-class Mesa {
+class Mesa : public ICollectible {
 private:
     int numero;
 public:

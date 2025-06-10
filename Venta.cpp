@@ -14,17 +14,18 @@ Venta::~Venta() {
 }
 
 bool Venta::comprobarSiExisteProducto(Producto* p) {
-    IIterator* it = productos->getIterator();
-    while (it->hasCurrent()) {
-        VentaProducto* vp = (VentaProducto*)it->getCurrent();
-        if (vp->getProducto()->getId() == p->getId()) {
-            delete it;
-            return true;
+    IIterator* it = this->productos->getIterator();
+    VentaProducto* vp;
+    bool existe = false;
+    while (it->hasCurrent() && !existe) {
+        vp = (VentaProducto*) it->getCurrent();
+        if (vp->getProducto() == p) {
+            existe = true;
         }
         it->next();
     }
     delete it;
-    return false;
+    return existe;
 }
 
 void Venta::borrarProducto(VentaProducto* vp) {

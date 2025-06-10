@@ -1,6 +1,6 @@
 #include "Mozo.h"
 #include "Venta.h"
-#include "List.h"
+#include "ICollection/collections/List.h"
 
 Mozo::Mozo(int id,string nombre){
     this->id = id;
@@ -13,9 +13,15 @@ void Mozo::asignarVenta(Venta* v) {
     ventasMesa->add(v);
     cantMesas++;
 }
+ICollection* Mozo::getMesas() {
+    return this->ventasMesa;
+}
 
 void Mozo::agregarVentaAMozo(Venta* v) {
-    ventasMesa->add(v);
+    this->ventasMesa->add(v);
+    cantMesas++;
+    v->asignarMozo(this);
+
 }
 
 string Mozo::nombreDelMozo() const {
