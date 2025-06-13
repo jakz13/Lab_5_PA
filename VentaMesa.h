@@ -7,13 +7,16 @@
 #include "VentaProducto.h"
 #include "DtFecha.h"
 #include "DtProducto.h"
+#include "Factura.h"
+#include "Mozo.h"
 
 class VentaMesa : public Venta {
 private:
+    Factura* factura;
     ICollection* mesas;
-    ICollection* ventaProductos;
+    Mozo* mozo;
 public:
-    VentaMesa(int id, float descuento, Mesa* mesa);
+    VentaMesa(int id, float descuento, Mesa* mesa, Mozo* mozo)
     void agregarMesaAVenta(Mesa* mesa);
     void asignarMozo(Mozo* mozo);
     Mozo* getMozo();

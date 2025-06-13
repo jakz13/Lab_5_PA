@@ -31,4 +31,17 @@ Sistema::~Sistema() {
     delete mozos;
 }
 
+void Sistema::agregarProducto(Producto* producto){
+    this->productos->add(producto);
+}
+
+void Sistema::agregarMenu(Menu* menu){
+    this->menus->add(menu);
+}
+
+void Sistema::agregarVenta(Venta* venta){        
+    this->ventas->add(venta);
+}
+
+
 // Aquí irían los métodos de casos de uso, alta, baja, buscar, etc.

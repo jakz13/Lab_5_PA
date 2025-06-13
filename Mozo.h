@@ -9,7 +9,7 @@ class Mozo : public Empleado {
 private:
     int cantMesas;
     ICollection* mesas; // ICollection<Mesa*>
-    ICollection* ventasMesa; // ICollection<Venta*>
+    ICollection* ventasMesa; // ICollection<VentaMesa*>
 public:
     Mozo(int id, string nombre);
     void asignarVenta(Venta* v);

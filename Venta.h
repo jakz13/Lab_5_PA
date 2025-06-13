@@ -8,9 +8,7 @@ class Venta : public ICollectible {
 protected:
     int id;
     float descuento;
-    ICollection* productos; // ICollection<VentaProducto*>
-    Mozo* mozo;
-    ICollection* mesas; // ICollection<Mesa*>
+    ICollection* ventaProductos; // ICollection<VentaProducto*>
 public:
     Venta(int id, float descuento = 0);
     virtual ~Venta();
