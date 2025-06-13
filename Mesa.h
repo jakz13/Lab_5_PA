@@ -4,7 +4,7 @@
 
 class Mesa : public ICollectible {
 private:
-    Venta* ventaActiva;
+    Venta* ventaMesaActiva;
     Mozo* mozo;
     int numero;
 public:
@@ -12,5 +12,6 @@ public:
     int getNumero() const;
     Venta* encontrarVenta();
     void confirmarQuitar();
+    void agregarVenta (VentaMesa* v);
     void AgregarProducto(Producto* p, int  cant);
 };

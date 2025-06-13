@@ -16,16 +16,17 @@ private:
     ICollection* mesas;
     Mozo* mozo;
 public:
-    VentaMesa(int id, float descuento, Mesa* mesa, Mozo* mozo)
-    void agregarMesaAVenta(Mesa* mesa);
+    VentaMesa(int id, Mozo* mozo);
     void asignarMozo(Mozo* mozo);
-    Mozo* getMozo();
-    DtProducto* getDatos();
-    void borrarProdVenta(VentaProducto* vp);
-    Venta* encontrarVenta(Mesa* mesa) const;
-    void facturar(const DtFecha& dtFecha, float porcentaje);
+    ICollection* getDatos();
+    void borrarProdVenta(string id, int cantidad);
+    Venta* encontrarVenta(Mesa* mesa);
+    void facturar (const DtFecha& fecha, float porcentaje);
     void agregarProducto(Producto* p, int cant);
     void incrementarCantidad(int cant);
+    void agregarMesaAVenta(Mesa* mesa);
+
+    Mozo* getMozo();
     virtual ~VentaMesa();
 };
 

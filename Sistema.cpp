@@ -45,3 +45,12 @@ void Sistema::agregarVenta(Venta* venta){
 
 
 // Aquí irían los métodos de casos de uso, alta, baja, buscar, etc.
+
+ICollection* Sistema::listarProductosSimples(){
+
+    IIterator* it = productosSimples->getIterator();
+    while (it->hasCurrent()){
+        it->
+
+    }
+}

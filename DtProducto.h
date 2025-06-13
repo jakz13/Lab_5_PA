@@ -1,7 +1,8 @@
 #pragma once
+#include "ICollection/collections/List.h"
 #include <string>
 
-class DtProducto {
+class DtProducto : public ICollectible{
 private:
     int id;
     std::string descripcion;

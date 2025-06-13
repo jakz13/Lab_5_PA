@@ -1,10 +1,14 @@
 #include "VentaProducto.h"
 
-VentaProducto::VentaProducto(Producto* producto, Venta* venta, float precio, int cantidad)
-    : producto(producto), venta(venta), precio(precio), cantidad(cantidad) {}
+VentaProducto::VentaProducto(Producto* producto, Venta* venta, float precio, int cantidad){
+    this->producto = producto;
+    this->venta = venta;
+    this->precio = precio;
+    this->cantidad = cantidad;
+}
 
 void VentaProducto::incrementarCantidad(int cant) {
-    cantidad += cant;
+    this->cantidad = this->cantidad += cant;
 }
 
 int VentaProducto::getCantidad() const {
@@ -17,13 +21,26 @@ void VentaProducto::borrarProducto(int cantidad) {
 }
 
 bool VentaProducto::comprobarSiExisteProducto(Producto* p) const {
-    return producto->getId() == p->getId();
+    return this->producto == p;
 }
 
 void VentaProducto::desvincularDeVenta() {
-    venta = nullptr;
+    this->venta = nullptr;
 }
 
-DtProductoConsumido VentaProducto::pedirDatos() const {
+
+DtProductoConsumido VentaProducto::pedirDatosAProducto() const {
     return DtProductoConsumido(producto->getId(), producto->getDescripcion(), cantidad, precio);
 }
+
+Producto* VentaProducto:: getProducto(){
+    return this->producto;
+}
+
+bool VentaProducto::contieneAlProducto(Producto* p){
+    return this->producto == p;
+}
+
+/*VentaProducto::~VentaProducto(){
+    this->producto
+}*/

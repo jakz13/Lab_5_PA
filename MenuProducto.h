@@ -1,4 +1,5 @@
 #pragma once
+#include "ICollection/collections/List.h"
 #include "Producto.h"
 #include "Menu.h"
 #include "ICollection.h"
@@ -10,8 +11,7 @@
 #include "DtFecha.h"
 
 
-class Menu;
-class MenuProducto {
+class MenuProducto : public ICollectible{
 private:
     Producto* producto;
     Menu* menu;
@@ -19,7 +19,8 @@ private:
 public:
     MenuProducto(Producto* producto, Menu* menu, int cantidad);
     void incrementarCantidad(int cant);
-    bool comprobar();
+    bool comprobarSiExisteProducto(Producto* p);
     void desvincularDeMenu();
     void desvincularDeProducto();
+    ~ MenuProducto();
 };

@@ -1,9 +1,10 @@
 #ifndef EMPLEADO_H
 #define EMPLEADO_H
+#include "ICollection/collections/List.h"
 #include <iostream>
 using namespace std;
 
-class Empleado {
+class Empleado : public ICollectible{
 protected:
     int id;
     string nombre;

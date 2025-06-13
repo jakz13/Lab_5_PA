@@ -1,18 +1,23 @@
 #pragma once
+#include "ICollection/collections/List.h"
 #include <string>
 #include "DtProducto.h"
 
-class Producto {
+class Producto: public ICollectible {
 private:
     int id;
-    std::string descripcion;
+    ICollection* ventaProductos;
+    ICollection* menuProductos;
+    string descripcion;
     float precio;
 public:
-    Producto(int id, std::string descripcion, float precio);
+    Producto(int id, string descripcion, float precio);
     int getId() const;
-    std::string getDescripcion() const;
+    string getDescripcion() const;
     float getPrecio() const;
     DtProducto getDatos() const;
     bool comprobarSiExisteProducto(const Producto* p) const;
     void desvincular();
+    void crearVentaProducuto();
+    DtProducto pedirDatos();
 };

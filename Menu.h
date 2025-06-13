@@ -9,18 +9,17 @@
 #include "DtProductoConsumido.h"
 #include "DtFactura.h"
 
-class Menu {
+class Menu : public Producto  {
 private:
-    int codigo;
-    std::string descripcion;
-    ICollection* productos; // ICollection<MenuProducto*>
     float precio;
+    ICollection* productos; 
+    ICollectible* menuProductos;
 public:
-    Menu(int codigo, std::string descripcion);
+    Menu(int codigo, string descripcion);
     ~Menu();
     float getPrecio();
-    void agregarProducto(MenuProducto* mp);
-    void borrarProducto(MenuProducto* mp);
+    void agregarProducto();
+    void borrarProducto();
     bool comprobarSiExisteProducto(Producto* p);
     bool tieneMasProductos();
     void desvincular();

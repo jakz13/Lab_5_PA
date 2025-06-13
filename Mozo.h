@@ -1,7 +1,7 @@
 #ifndef MOZO_H
 #define MOZO_H
 #include "Empleado.h"
-#include "Venta.h"
+#include "VentaMesa.h"
 #include "ICollection/collections/List.h"
 using namespace std;
 
@@ -12,10 +12,11 @@ private:
     ICollection* ventasMesa; // ICollection<VentaMesa*>
 public:
     Mozo(int id, string nombre);
-    void asignarVenta(Venta* v);
-    void agregarVentaAMozo(Venta* v);
-    string nombreDelMozo() const;
     ICollection* getMesas();
+    //void asignarVenta(Venta* v);
+    void agregarVentaAMozo(VentaMesa* v);
+    string nombreDelMozo() const;
+    ICollection* getNroMesas();
 };
 
 #endif // MOZO_H

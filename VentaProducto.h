@@ -16,5 +16,9 @@ public:
     void borrarProducto(int cantidad);
     bool comprobarSiExisteProducto(Producto* p) const;
     void desvincularDeVenta();
-    DtProductoConsumido pedirDatos() const;
+    DtProductoConsumido pedirDatosAProducto() const;
+    bool contieneAlProducto(Producto* p);
+    ~VentaProducto();
+
+    Producto* getProducto();
 };

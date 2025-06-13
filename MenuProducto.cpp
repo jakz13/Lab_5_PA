@@ -1,21 +1,24 @@
 #include "MenuProducto.h"
+#include "ICollection/interfaces/IIterator.h" 
 
-MenuProducto::MenuProducto(Producto* producto, Menu* menu, int cantidad)
-    : producto(producto), menu(menu), cantidad(cantidad) {}
-
-void MenuProducto::incrementarCantidad(int cant) {
-    cantidad += cant;
+MenuProducto::MenuProducto(Producto* producto, Menu* menu, int cantidad){
+    this->producto = producto;
+    this->menu = menu;
+    this->cantidad  = cantidad;
 }
 
-bool MenuProducto::comprobar() {
-    // Lógica para comprobar si el producto está en el menú
-    return true;
+void MenuProducto::incrementarCantidad(int cant) {
+    this->cantidad = this->cantidad += cant;
+}
+
+bool MenuProducto::comprobarSiExisteProducto(Producto* p) {
+    return this->producto == p;
 }
 
 void MenuProducto::desvincularDeMenu() {
-    menu = nullptr;
+    this->menu = nullptr;
 }
 
 void MenuProducto::desvincularDeProducto() {
-    producto = nullptr;
+    this->producto = nullptr;
 }

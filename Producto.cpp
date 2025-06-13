@@ -1,13 +1,16 @@
 #include "Producto.h"
 
-Producto::Producto(int id, std::string descripcion, float precio)
-    : id(id), descripcion(descripcion), precio(precio) {}
-
+Producto::Producto(int id, string descripcion, float precio){
+    this->id= id;
+    this->descripcion = descripcion;
+    this->precio = precio;
+}
+   
 int Producto::getId() const {
     return id;
 }
 
-std::string Producto::getDescripcion() const {
+string Producto::getDescripcion() const {
     return descripcion;
 }
 

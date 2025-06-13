@@ -1,20 +1,21 @@
 #include "Venta.h"
 
-Venta::Venta(int id, float descuento)
-    : id(id), descuento(descuento), productos(new List()) {}
+Venta::Venta(int id){
+    this->id = id;
+}
 
 Venta::~Venta() {
-    IIterator* it = productos->getIterator();
+    IIterator* it = ventaProductos->getIterator();
     while (it->hasCurrent()) {
-        delete (VentaProducto*)it->getCurrent();
+        delete (Producto*)it->getCurrent();
         it->next();
     }
     delete it;
-    delete productos;
+    delete ventaProductos;
 }
 
 bool Venta::comprobarSiExisteProducto(Producto* p) {
-    IIterator* it = this->productos->getIterator();
+    IIterator* it = this->ventaProductos->getIterator();
     VentaProducto* vp;
     bool existe = false;
     while (it->hasCurrent() && !existe) {
@@ -28,15 +29,26 @@ bool Venta::comprobarSiExisteProducto(Producto* p) {
     return existe;
 }
 
-void Venta::borrarProducto(VentaProducto* vp) {
-    productos->remove(vp);
-}
-
 void Venta::agregarProducto(Producto* p, int cant) {
-    VentaProducto* vp = new VentaProducto(p, this, p->getPrecio(), cant);
-    productos->add(vp);
+    if (!this->comprobarSiExisteProducto(p)) {
+        VentaProducto* vp = new VentaProducto(p, this, p->getPrecio(), cant);
+        this->ventaProductos->add(vp);
+    } else {
+        IIterator* it = this->ventaProductos->getIterator();
+        while (it->hasCurrent()) {
+            VentaProducto* vp = (VentaProducto*)it->getCurrent();
+            if (vp->comprobarSiExisteProducto(p)) {
+                vp->incrementarCantidad(cant);
+                break;
+            }
+            it->next();
+        }
+        delete it;
+    }
 }
 
-void Venta::desvincular() {
-    // Lógica para desvincular productos de la venta
+
+void Venta::desvincular(VentaProducto* vp) {
+    vp->desvincularDeVenta();
+    
 }

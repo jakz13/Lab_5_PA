@@ -10,12 +10,11 @@ protected:
     float descuento;
     ICollection* ventaProductos; // ICollection<VentaProducto*>
 public:
-    Venta(int id, float descuento = 0);
+    Venta(int id);
     virtual ~Venta();
     bool comprobarSiExisteProducto(Producto* p);
-    void borrarProducto(VentaProducto* vp);
     void agregarProducto(Producto* p, int cant);
-    void desvincular();
+    void desvincular(VentaProducto* vp);
     //void agregarMesaAVenta(Mesa* mesa);
     //void asignarMozo(Mozo* mozo);
 
