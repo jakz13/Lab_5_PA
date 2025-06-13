@@ -1,4 +1,3 @@
-#pragma once
 #include "ICollection/collections/List.h"
 #include <string>
 #include "DtProducto.h"

@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 #include "DtFactura.h"
-#include "ICollection.h"
+#include "DtFecha.h"
+#include "ICollection/interfaces/ICollectible.h"
+#include "ICollection/interfaces/ICollection.h"
 
 class Factura {
 private:

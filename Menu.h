@@ -1,4 +1,3 @@
-#pragma once
 #include <string>
 #include "ICollection.h"
 #include "MenuProducto.h"
@@ -9,6 +8,7 @@
 #include "DtProductoConsumido.h"
 #include "DtFactura.h"
 
+class MenuProducto;
 class Menu : public Producto  {
 private:
     float precio;

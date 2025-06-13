@@ -1,4 +1,3 @@
-#pragma once
 #include "ICollection/collections/List.h"
 #include "Producto.h"
 #include "Menu.h"
@@ -17,10 +16,11 @@ private:
     Menu* menu;
     int cantidad;
 public:
+    MenuProducto();
     MenuProducto(Producto* producto, Menu* menu, int cantidad);
     void incrementarCantidad(int cant);
     bool comprobarSiExisteProducto(Producto* p);
     void desvincularDeMenu();
     void desvincularDeProducto();
-    ~ MenuProducto();
+    ~MenuProducto();
 };
