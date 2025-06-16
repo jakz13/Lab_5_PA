@@ -13,12 +13,14 @@ public:
     VentaProducto(Producto* producto, Venta* venta, float precio, int cantidad);
     void incrementarCantidad(int cant);
     int getCantidad() const;
+    float getPrecio() const;
     void borrarProducto(int cantidad);
     bool comprobarSiExisteProducto(Producto* p) const;
     void desvincularDeVenta();
-    DtProductoConsumido pedirDatosAProducto() const;
+    DtProductoConsumido* pedirDatos() const;
     bool contieneAlProducto(Producto* p);
     ~VentaProducto();
 
     Producto* getProducto();
 };
+

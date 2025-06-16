@@ -22,3 +22,11 @@ void MenuProducto::desvincularDeMenu() {
 void MenuProducto::desvincularDeProducto() {
     this->producto = nullptr;
 }
+
+Producto* MenuProducto:: getProducto(){
+    return this->producto;
+}
+
+int MenuProducto:: getCantidad(){
+    return this->cantidad;
+}

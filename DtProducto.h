@@ -3,13 +3,16 @@
 #include <string>
 
 class DtProducto : public ICollectible{
-private:
-    int id;
+protected:
+    std::string id;
     std::string descripcion;
     float precio;
 public:
-    DtProducto(int id, std::string descripcion, float precio);
-    int getId() const;
+    DtProducto();
+    DtProducto(std::string id, std::string descripcion, float precio);
+    std::string getId() const;
     std::string getDescripcion() const;
     float getPrecio() const;
+    virtual DtProducto* getDatos() = 0;
+    virtual void imprimirProducto() = 0;
 };

@@ -1,4 +1,4 @@
-#include "Mesa.h"
+/*#include "Mesa.h"
 
 Mesa::Mesa(int numero){
     this->numero =numero;
@@ -23,10 +23,34 @@ Venta* Mesa::encontrarVenta(){
     return nullptr;
 }*/
 
-void Mesa::confirmarQuitar() {
+/*void Mesa::confirmarQuitar() {
     // Lógica para confirmar quitar la mesa de una venta
 }
 
 void Mesa::AgregarProducto(Producto* producto, int cant){
     
+}*/
+
+#include "Mesa.h"
+
+Mesa::Mesa(int numero) {
+    this->numero = numero;
+    this->ventaActual = nullptr;
+}
+
+Mesa::~Mesa() {
+    if (ventaActual != nullptr)
+        delete ventaActual;
+}
+
+int Mesa::getNumero() const {
+    return numero;
+}
+
+Venta* Mesa::getVentaActual() const {
+    return ventaActual;
+}
+
+void Mesa::asignarVenta(Venta* venta) {
+    this->ventaActual = venta;
 }

@@ -9,11 +9,18 @@
 #include "Mozo.h"
 #include "Factura.h"
 #include "Isistema.h"
+#include  "ICollection/collections/OrderedDictionary.h"
+#include  "ICollection/interfaces/StringKey.h"
 #include "ICollection/interfaces/IDictionary.h"
 #include "ICollection/interfaces/IIterator.h"
+#include "Icollection/Integer.h"
+
+using namespace std;
 
 class Sistema : public Isistema {
 private:
+    static Sistema * instance;
+    Sistema();
     IDictionary* productos;
     ICollection* productosElegidos;
     ICollection* productosSimples;
@@ -24,8 +31,17 @@ private:
     IDictionary* mesas;
     ICollection* mesasElegidas;
     IDictionary* empleados;
+
+    Producto* bajarProducto;
+
+    Menu* menuTemporal;
+    ProductoSimple* prodTemporal;
+    Mesa* mesaAFacturar;
+    float descuento;
+    DtFecha* fecha;
+
 public:
-    Sistema();
+    
     ~Sistema();
     static Sistema * getInstance();
     // Métodos de casos de uso, alta, baja, buscar, etc.
@@ -52,18 +68,22 @@ public:
     IDictionary* getEmpleados() const;
 
 
-    void ingresarMenu(int codigo, string descripcion);
+    void ingresarMenu(string codigo, string descripcion);
     ICollection* listarProductosSimples();
-    void seleccionarProducto(string** id, int** cant);
+    bool seleccionarProducto(string codigo, int cant);
     void altamenu();
-    void ingresarProducto(int codigo, string descripcion, float precio);
+    void ingresarProducto(string codigo, string descripcion, float precio);
     void altaProducto();
     void numeroMesa(int numero);
+    float getDescuento();
     void ingresarDescuento(float porcentaje);
-    DtFactura emitirFactura(Mesa* mesa);
+    DtFactura* emitirFactura();
+    void ingresarFechaActual(DtFecha* f);
+
+
     ICollection* listarProductos();
     void seleccionarProducto(string id);
-    void bajaProductoVenta(Producto* producto);
+    void bajaProductoVenta();
     ICollection* ingresarMozo(string id);
     void seleccionarMesa (int** numero);
     ICollection* listarMesas();
@@ -79,3 +99,5 @@ public:
     //FALTA AGREGAR MÁS FUNCIONES 
     // Otros métodos según sea necesario
 };
+
+#endif

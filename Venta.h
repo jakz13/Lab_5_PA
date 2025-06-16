@@ -15,6 +15,8 @@ public:
     bool comprobarSiExisteProducto(Producto* p);
     void agregarProducto(Producto* p, int cant);
     void desvincular(VentaProducto* vp);
+    ICollection* getVentaProducto();
+    int getId();
     //void agregarMesaAVenta(Mesa* mesa);
     //void asignarMozo(Mozo* mozo);
 

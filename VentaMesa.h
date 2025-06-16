@@ -7,21 +7,26 @@
 #include "VentaProducto.h"
 #include "DtFecha.h"
 #include "DtProducto.h"
+#include "DtFactura.h"
 #include "Factura.h"
 #include "Mozo.h"
+#include  "ICollection/Integer.h"
 
 class VentaMesa : public Venta {
 private:
     Factura* factura;
-    ICollection* mesas;
+    IDictionary* mesas;
     Mozo* mozo;
 public:
     VentaMesa(int id, Mozo* mozo);
     void asignarMozo(Mozo* mozo);
     ICollection* getDatos();
+    bool encontrarVenta(Mesa* mesa);
+    DtFactura* facturar(DtFecha* fecha, float porcentaje);
+    float calcularTotal();
+
+
     void borrarProdVenta(string id, int cantidad);
-    Venta* encontrarVenta(Mesa* mesa);
-    void facturar (const DtFecha& fecha, float porcentaje);
     void agregarProducto(Producto* p, int cant);
     void incrementarCantidad(int cant);
     void agregarMesaAVenta(Mesa* mesa);
