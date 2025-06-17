@@ -29,8 +29,8 @@ void VentaProducto::desvincularDeVenta() {
 }
 
 
-DtProductoConsumido VentaProducto::pedirDatosAProducto() const {
-    return DtProductoConsumido(producto->getId(), producto->getDescripcion(), cantidad, precio);
+DtProductoConsumido* VentaProducto::pedirDatos() const {
+    return new DtProductoConsumido(producto->getId(), producto->getDescripcion(), cantidad, precio);
 }
 
 Producto* VentaProducto:: getProducto(){
@@ -41,6 +41,7 @@ bool VentaProducto::contieneAlProducto(Producto* p){
     return this->producto == p;
 }
 
-/*VentaProducto::~VentaProducto(){
-    this->producto
-}*/
+float VentaProducto::getPrecio() const{
+    return this->precio;
+}
+

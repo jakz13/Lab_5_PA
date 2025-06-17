@@ -14,6 +14,10 @@ Venta::~Venta() {
     delete ventaProductos;
 }
 
+int Venta::getId(){
+    return this->id;
+}
+
 bool Venta::comprobarSiExisteProducto(Producto* p) {
     IIterator* it = this->ventaProductos->getIterator();
     VentaProducto* vp;
@@ -52,3 +56,9 @@ void Venta::desvincular(VentaProducto* vp) {
     vp->desvincularDeVenta();
     
 }
+
+ICollection* Venta::getVentaProducto(){
+    return this->ventaProductos;
+}
+
+

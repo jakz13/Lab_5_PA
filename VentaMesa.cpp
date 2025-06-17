@@ -61,24 +61,51 @@ void VentaMesa::borrarProdVenta(string id, int cantidad) {
 }
 
 // Busca una venta asociada a una mesa
-Venta* VentaMesa::encontrarVenta(Mesa* mesa)  {
-    IIterator* it = this->mesas->getIterator();
-    while (it->hasCurrent()) {
-        Mesa* m = (Mesa*)it->getCurrent();
-        if (m == mesa) {
-            delete it;
-            return (Venta*)this; // Devuelve esta venta si la mesa está asociada
-        }
-        it->next();
+bool VentaMesa::encontrarVenta(Mesa* mesa)  {
+    bool esta = false;
+    IKey* clave = new  Integer (mesa->getNumero());
+    if (this->mesas->member(clave)){
+        esta = true; // Devuelve esta venta si la mesa está asociada
     }
-    delete it;
-    return nullptr;
+    delete clave;
+    return esta;
 }
 
-void VentaMesa::facturar(const DtFecha& dtFecha, float porcentaje) {
-    // Implementación para facturar la venta
-    // Aquí se puede aplicar el descuento y generar la factura
+float VentaMesa::calcularTotal(){
+    float total = 0;
+    IIterator* it = ventaProductos->getIterator();
+    while (it->hasCurrent()){
+        VentaProducto* vp  = dynamic_cast<VentaProducto*>(it->getCurrent());
+        total += (vp->getCantidad() * vp->getPrecio());
+
+        it->next();
+    }
+    return total;
 }
+
+DtFactura* VentaMesa::facturar(DtFecha* fecha, float porcentaje){
+    ICollection* prodConsumido = new List();
+    IIterator* it = ventaProductos->getIterator();
+    while(it->hasCurrent()){
+        VentaProducto* vp = dynamic_cast<VentaProducto*>(it->getCurrent());
+        prodConsumido->add(vp->pedirDatos());
+
+        it->next();
+    }
+
+    float total = calcularTotal();
+    float totalDescuento = total * (porcentaje/100.0);
+    float Iva = totalDescuento * 1.22;
+
+    Factura* fact = new Factura (fecha,total, Iva,totalDescuento,prodConsumido);
+
+    string NomMozo = mozo->getNombre();
+
+    return new DtFactura(fact->getId(), fact->getFecha(),fact->getTotal(), fact->getIva(), fact->getTotalDescuento(), this->mozo->getNombre());
+
+}
+
+
 
 
 

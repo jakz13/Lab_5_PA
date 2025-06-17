@@ -22,5 +22,7 @@ public:
     bool comprobarSiExisteProducto(Producto* p);
     void desvincularDeMenu();
     void desvincularDeProducto();
+    int getCantidad();
+    Producto* getProducto();
     ~ MenuProducto();
 };

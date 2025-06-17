@@ -6,46 +6,50 @@
 #include "MenuProducto.h"
 #include "Producto.h"
 
-Menu::Menu(int codigo, std::string descripcion)
-    : codigo(codigo), descripcion(descripcion), productos(new List()) {}
+Menu::Menu(std::string codigo, std::string descripcion){
+    this->id = codigo;
+    this->descripcion = descripcion;
+    this->menuProductos = new List();   
+}
 
 Menu::~Menu() {
     // Liberar memoria de productos
-    IIterator* it = productos->getIterator();
+    IIterator* it = menuProductos->getIterator();
     while (it->hasCurrent()) {
         delete (MenuProducto*)it->getCurrent();
         it->next();
     }
     delete it;
-    delete productos;
+    delete menuProductos;
 }
 
 float Menu::getPrecio() {
     float suma = 0;
-    IIterator* it = productos->getIterator();
+    IIterator* it = menuProductos->getIterator();
     while (it->hasCurrent()) {
         MenuProducto* mp = (MenuProducto*)it->getCurrent();
         suma += mp->getProducto()->getPrecio() * mp->getCantidad();
         it->next();
     }
     delete it;
+    this->precioMenu = suma *0.9f;
     // 10% de descuento sobre la suma de productos
     return suma * 0.9f;
 }
 
-void Menu::agregarProducto(MenuProducto* mp) {
-    productos->add(mp);
+void Menu::agregarProducto(MenuProducto* mprod) {
+    this->menuProductos->add(mprod);
 }
-
+/**/
 void Menu::borrarProducto(MenuProducto* mp) {
     productos->remove(mp);
-}
+}*/
 
-bool Menu::comprobarSiExisteProducto(Producto* p) {
-    IIterator* it = productos->getIterator();
+bool Menu::comprobarSiExisteProducto(ProductoSimple* p) {
+    IIterator* it = menuProductos->getIterator();
     while (it->hasCurrent()) {
         MenuProducto* mp = (MenuProducto*)it->getCurrent();
-        if (mp->getProducto()->getId() == p->getId()) {
+        if (mp->getProducto()->comprobarSiExisteProducto(p)) {
             delete it;
             return true;
         }
@@ -53,12 +57,16 @@ bool Menu::comprobarSiExisteProducto(Producto* p) {
     }
     delete it;
     return false;
-}
+}   
 
 bool Menu::tieneMasProductos() {
-    return productos->getSize() > 0;
+    return menuProductos->getSize() > 0;
 }
 
 void Menu::desvincular() {
     // Lógica para desvincular productos del menú
+}
+
+DtMenu Menu::getDatos() const{
+    return DtMenu(this->id, this->descripcion, this->precio, this->menuProductos);
 }
