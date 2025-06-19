@@ -1,8 +1,12 @@
-#pragma once
+#ifndef DTAIGNACION_H
+#define DTAIGNACION_H
+
 #include <string>
 #include<iostream>
 using namespace std;
 #include "ICollection/interfaces/ICollectible.h"
+
+
 
 
 class DtAsignacion : public ICollectible{
@@ -16,3 +20,4 @@ class DtAsignacion : public ICollectible{
       int getNumero();
       string getNombre();
 };
+#endif // DTAIGNACION_H

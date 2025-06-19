@@ -1,8 +1,10 @@
-#pragma once
+#ifndef MENU_PRODUCTO_H
+#define MENU_PRODUCTO_H
 #include "ICollection/collections/List.h"
+#include "ICollection/interfaces/ICollection.h"
+#include "ICollection/interfaces/ICollectible.h"
 #include "Producto.h"
 #include "Menu.h"
-#include "ICollection.h"
 #include "DtProductoConsumido.h"
 #include "DtProducto.h"
 #include "List.h"
@@ -10,6 +12,10 @@
 #include "DtFactura.h"
 #include "DtFecha.h"
 
+
+// Forward declarations
+class DtMenuProducto;
+class DtProducto;
 
 class MenuProducto : public ICollectible{
 private:
@@ -26,3 +32,5 @@ public:
     ProductoSimple* getProducto();
     ~ MenuProducto();
 };
+
+#endif // MENU_PRODUCTO_H

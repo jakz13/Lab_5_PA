@@ -1,4 +1,5 @@
-#pragma once
+#ifndef REPARTIDOR_H
+#define REPARTIDOR_H
 #include "Empleado.h"
 #include <string>
 #include "MedioTransporte.h"
@@ -13,3 +14,4 @@ public:
     MedioTransporte* getMedio() const;
     
 };
+#endif // REPARTIDOR_H

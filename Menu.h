@@ -1,6 +1,8 @@
-#pragma once
+#ifndef MENU_H
+#define MENU_H
 #include <string>
-#include "ICollection.h"
+#include "ICollection/interfaces/ICollection.h"
+#include "ICollection/interfaces/ICollectible.h"
 #include "MenuProducto.h"
 #include "Producto.h"
 #include "List.h"
@@ -12,6 +14,10 @@
 #include "DtMenu.h"
 #include<iostream>
 using namespace std;
+
+// Forward declarations
+class DtMenu;
+class DtProducto;
 
 class Menu : public Producto  {
 private:
@@ -29,3 +35,5 @@ public:
     void desvincularTodo();
     ICollection* getProductos();
 };
+
+#endif // MENU_H

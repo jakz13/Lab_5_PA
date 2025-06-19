@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SISTEMA_H
+#define SISTEMA_H
 #include "Producto.h"
 #include "Menu.h"
 #include "Venta.h"
@@ -6,6 +7,7 @@
 #include "Mozo.h"
 #include "Factura.h"
 #include "ICollection/interfaces/ICollection.h"
+#include "ICollection/interfaces/ICollectible.h"
 #include  "ICollection/collections/OrderedDictionary.h"
 #include  "ICollection/interfaces/StringKey.h"
 #include "ICollection/interfaces/IDictionary.h"
@@ -121,3 +123,5 @@ public:
     //FALTA AGREGAR MÁS FUNCIONES 
     // Otros métodos según sea necesario
 };
+
+#endif // SISTEMA_H

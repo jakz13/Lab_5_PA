@@ -1,10 +1,16 @@
-#pragma once
+#ifndef DTPRODUCTOELEGIDO_H
+#define DTPRODUCTOELEGIDO_H
 #include "ICollection/collections/List.h"
 #include "ICollection/interfaces/ICollection.h"
+#include "ICollection/interfaces/ICollectible.h"
 #include <string>
 #include "ProductoSimple.h"
 #include<iostream>
 using namespace std;
+
+// Forward declarations
+class ProductoSimple;
+
 
 class DtProductoElegido : public ICollectible{
 
@@ -18,3 +24,5 @@ class DtProductoElegido : public ICollectible{
       ProductoSimple* getProducto ();
       int getCantidad();
 };
+
+#endif // DTPRODUCTOELEGIDO_H

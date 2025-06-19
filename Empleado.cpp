@@ -2,15 +2,16 @@
 
 Empleado::Empleado(int id, string nombre) {
     this->nombre = nombre;
+    this->id = id;
 }
 
 Empleado::Empleado(){
 
 }
-int Empleado::getId() const {
+int Empleado::getId()  {
     return this->id;
 }
 
-string Empleado::getNombre() const {
+string Empleado::getNombre()  {
     return this->nombre;
 }

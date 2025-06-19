@@ -1,10 +1,15 @@
-#pragma once
+#ifndef CLIENTE_H
+#define CLIENTE_H
 #include <string>
 #include<iostream>
 #include "DtDireccion.h"
 #include "DtCliente.h"
 #include "ICollection/interfaces/ICollectible.h"
 using namespace std;
+
+// Forward declarations
+class DtCliente;
+class DtDireccion;
 
 class Cliente :public ICollectible {
 private:
@@ -18,3 +23,5 @@ public:
     DtDireccion* getDireccion() const;
     DtCliente* getDatos();
 };
+
+#endif // CLIENTE_H

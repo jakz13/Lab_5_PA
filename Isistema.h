@@ -1,5 +1,8 @@
-#pragma once
+#ifndef ISISTEMA_H
+#define ISISTEMA_H
 #include "Sistema.h"
+#include "ICollection/interfaces/ICollection.h"
+#include "ICollection/interfaces/ICollectible.h"
 
 #include <iostream>
 using namespace std;
@@ -48,3 +51,4 @@ class ISistema {
     virtual bool existeCliente (string telefono) = 0;
 };
 
+#endif // ISISTEMA_H

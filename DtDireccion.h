@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DTDIRECCION_H
+#define DTDIRECCION_H
 #include <string>
 #include<iostream>
 using namespace std;
@@ -17,3 +18,5 @@ public:
    int getNumero();
    ~DtDireccion();
 };
+
+#endif // DTDIRECCION_H 

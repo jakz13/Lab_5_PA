@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FACTORY_H
+#define FACTORY_H
 #include <string>
 #include "ProductoSimple.h"
 #include "Menu.h"
@@ -15,3 +16,4 @@ class Factory {
 
 };
 
+#endif // FACTORY_H

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MEDIOTRANSPORTE_H
+#define MEDIOTRANSPORTE_H     
 #include<iostream>
 #include<string>
 using namespace std;
@@ -10,3 +11,5 @@ enum MedioTransporte {
    BICI, 
    MOTO
 };
+
+#endif // MEDIOTRANSPORTE_H

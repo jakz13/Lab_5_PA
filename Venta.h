@@ -1,10 +1,19 @@
-#pragma once
+#ifndef VENTA_H
+#define VENTA_H
+
 #include "ICollection/collections/List.h"
-#include "VentaProducto.h"
-#include "Producto.h"
-#include "Mesa.h"
-#include "Mozo.h"
 #include "ICollection/interfaces/IIterator.h"
+#include "ICollection/interfaces/ICollection.h"
+#include "ICollection/interfaces/ICollectible.h"
+
+// Forward declarations
+class Producto;
+class VentaProducto;
+class Factura;
+class DtFactura;
+class Mesa;
+class Mozo;
+class DtFecha;
 
 class Venta : public ICollectible {
 protected:
@@ -29,3 +38,5 @@ public:
     //void asignarMozo(Mozo* mozo);
 
 };
+
+#endif // VENTA_H

@@ -1,4 +1,6 @@
 #include "DtApartamento.h"
+#include <iostream>
+using namespace std;
 
 DtApartamento::DtApartamento(string nombreEdificio, int numeroApto, string calle, string entreCalle, int numeroEdi){
    this->nombreEdificio = nombreEdificio;
@@ -6,13 +8,15 @@ DtApartamento::DtApartamento(string nombreEdificio, int numeroApto, string calle
    this->nombreCalle = calle;
    this->entreCalles = entreCalle;
    this->numero = numeroEdi;
+   
+
 }
 string DtApartamento::getNombreEdificio(){
-   this->nombreEdificio;
+   return this->nombreEdificio;
 }
 
 int DtApartamento::getNumeroApto(){
-   this->numeroApartamento;
+   return this->numeroApartamento;
 }
 
 DtApartamento::~DtApartamento()

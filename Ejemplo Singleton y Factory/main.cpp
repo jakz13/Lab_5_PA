@@ -1,7 +1,7 @@
 #include "Factory.h"
 #include "ISistema.h"
 
-int main() {
+int main() {/*
     ISistema * s = Factory::getSistema();
     cout << "soy feliz" << endl;;
     if (s != NULL) {
@@ -9,6 +9,6 @@ int main() {
         cout << "Nombre del Socio: " << s->getNombreSocio() << endl;
     }
     else
-        cout << "El sistema está en NULL  :(" << endl;
+        cout << "El sistema está en NULL  :(" << endl;*/
     return 0;
 }

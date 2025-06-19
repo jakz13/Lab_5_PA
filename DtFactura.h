@@ -1,8 +1,14 @@
-#pragma once
+#ifndef DTFACTURA_H
+#define DTFACTURA_H
 #include <string>
 #include "DtFecha.h"
 #include<iostream>
-using namespace std;
+#include "ICollection/interfaces/ICollectible.h"
+#include "ICollection/interfaces/ICollection.h"
+#include "Producto.h"
+
+using namespace std;                                        
+
 
 class DtFactura {
 private:
@@ -23,3 +29,4 @@ public:
     float getIva() const;
     float getTotalDescuento() const;
 };
+#endif // DTFACTURA_H

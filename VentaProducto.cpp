@@ -1,4 +1,9 @@
 #include "VentaProducto.h"
+#include "Producto.h"
+#include "Venta.h"
+#include "DtProductoConsumido.h"
+
+
 
 VentaProducto::VentaProducto(Producto* producto, Venta* venta, float precio, int cantidad){
     this->producto = producto;
