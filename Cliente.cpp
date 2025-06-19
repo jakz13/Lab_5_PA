@@ -1,8 +1,23 @@
 #include "Cliente.h"
 
-Cliente::Cliente(std::string telefono, std::string nombre, std::string direccion)
-    : telefono(telefono), nombre(nombre), direccion(direccion) {}
+Cliente::Cliente(string telefono,string nombre, DtDireccion* direccion){
+    this->telefono = telefono;
+    this->nombre = nombre;
+    this->direccion = direccion;
+}    
 
-std::string Cliente::getTelefono() const { return telefono; }
-std::string Cliente::getNombre() const { return nombre; }
-std::string Cliente::getDireccion() const { return direccion; }
+string Cliente::getTelefono() const { 
+    return telefono; 
+}
+
+string Cliente::getNombre() const {
+    return nombre; 
+}
+
+DtDireccion* Cliente::getDireccion() const { 
+    return direccion; 
+}
+
+DtCliente* Cliente::getDatos(){
+    return new DtCliente (telefono, nombre,direccion);
+}

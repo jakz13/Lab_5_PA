@@ -10,12 +10,14 @@
 #include "DtFactura.h"
 #include "ProductoSimple.h" 
 #include "DtMenu.h"
+#include<iostream>
+using namespace std;
 
 class Menu : public Producto  {
 private:
     ICollection* menuProductos;
 public:
-    Menu(std::string codigo, std::string descripcion);
+    Menu(string codigo, string descripcion);
     ~Menu();
     DtMenu* getDatos();
     float getPrecio();

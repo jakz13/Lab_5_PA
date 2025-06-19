@@ -8,14 +8,19 @@ private:
     VentaMesa* ventaMesaActiva;
     Mozo* mozo;
     int numero;
+    bool asignada;
 public:
     Mesa(int numero);
     DtMesa* getDatos() const;
     VentaMesa* encontrarVenta();
     int getNumero();
+    Mozo* getMozo();
     void confirmarQuitar(Producto* p, int cantidad);
     void agregarVenta (VentaMesa* v);
     void AgregarProducto(Producto* p, int  cant);
+    bool getasignada();
+    void asinadaTrue();
+    void agregarMozo(Mozo* mozo);
 };
 
 

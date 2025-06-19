@@ -1,10 +1,11 @@
+#pragma once
 #include "Mozo.h"
 #include "VentaMesa.h"
 #include "Venta.h"
 #include "ICollection/collections/List.h"
 #include "ICollection/collections/OrderedDictionary.h"
 
-Mozo::Mozo(int id,string nombre){
+Mozo::Mozo(int id, string nombre){
     this->id = id;
     this->nombre = nombre;
     this->cantMesas = 0;
@@ -51,6 +52,10 @@ ICollection* Mozo::getDatosMesa(){
     }
     delete it;
     return dataMesas;
+}
+
+void Mozo::incrementarCantidad(int cant){
+    this->cantMesas += cant;
 }
 
 

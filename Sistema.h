@@ -1,25 +1,32 @@
-#ifndef SISTEMA_H
-#define SISTEMA_H
 #pragma once
-#include "ICollection.h"
 #include "Producto.h"
 #include "Menu.h"
 #include "Venta.h"
 #include "Mesa.h"
 #include "Mozo.h"
 #include "Factura.h"
-#include "Isistema.h"
+#include "ICollection/interfaces/ICollection.h"
 #include  "ICollection/collections/OrderedDictionary.h"
 #include  "ICollection/interfaces/StringKey.h"
 #include "ICollection/interfaces/IDictionary.h"
 #include "ICollection/interfaces/IIterator.h"
 #include "Icollection/Integer.h"
+#include "DtDireccion.h"
+#include "Cliente.h"
+#include "MedioTransporte.h"
+#include "Repartidor.h"
+#include "DtAsignacion.h"
+#include "DtProductoElegido.h"
+#include "ISistema.h"
+
 
 using namespace std;
 
-class Sistema : public Isistema {
+class Sistema : public ISistema {
 private:
     static Sistema * instance;
+    static int contador;
+
     Sistema();
     IDictionary* productos;
     ICollection* productosElegidos;
@@ -31,6 +38,9 @@ private:
     IDictionary* mesas;
     ICollection* mesasElegidas;
     IDictionary* empleados;
+    IDictionary* mozos;
+    IDictionary* repartidores;
+    IDictionary* clientes;
 
 
     Producto* bajarProducto;
@@ -45,22 +55,16 @@ private:
     Producto* prodAAgregar;
     Producto* quitar;
     int cantidad;
+    Cliente * clienteTemporal;
+    string stringTemporal;
+    ICollection* listaMedioTransporte;
+    MedioTransporte* medioTemporal;
 
 public:
     
     ~Sistema();
     static Sistema * getInstance();
     // Métodos de casos de uso, alta, baja, buscar, etc.
-    void agregarProducto(Producto* producto);
-    void agregarProductoElegido(Producto* producto);
-    void agregarProductoSimple(Producto* producto);
-    void agregarMenu(Menu* menu);
-    void agregarVentas(Venta* venta);
-    void agregarVentaActiva(Venta* venta);
-    void agregarVentaFacturada(Venta* venta);
-    void agregarMesa(Mesa* mesa);
-    void agregarMesaElegida(Mesa* mesa);
-    void agregarEmpleado(Empleado* empleado);
     
     IDictionary* getProductos() const;
     ICollection* getProductosElegidos() const;
@@ -76,7 +80,7 @@ public:
 
     void ingresarMenu(string codigo, string descripcion);
     ICollection* listarProductosSimples();
-    bool seleccionarProducto(string codigo, int cant);
+    void seleccionarProducto(string codigo, int cant);
     void altamenu();
     void cancelarAltaMenu();
     void ingresarProducto(string codigo, string descripcion, float precio);
@@ -100,10 +104,20 @@ public:
     ICollection* numeroMesaQuitar(int numero);
     void quitarProducto(string id, int cantidad);
     void confirmarQuitar(Producto* p, int cantidad);
-    
+    DtCliente* ingresarDatosCliente(string telefono, string nombre, DtDireccion* direccion);
+    void altaCliente();
+    void cancelarAltaCliente();
+    void ingresarNombreEmpleado(string nombre);
+    ICollection* listarTransporte();
+    void elegirTransporte (MedioTransporte* medio);
+    //void crearListaTransporte();
+    void altaRepartidor();
+    void cancelarAltaRepartidor();
+    void altaMozo();
+    ICollection* asignarMesasAMozo();
+    bool existeCliente (string telefono);
 
+    
     //FALTA AGREGAR MÁS FUNCIONES 
     // Otros métodos según sea necesario
 };
-
-#endif

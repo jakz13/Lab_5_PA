@@ -1,3 +1,4 @@
+#pragma once
 #include "MenuProducto.h"
 #include "ICollection/interfaces/IIterator.h" 
 

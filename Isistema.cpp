@@ -1,3 +1,3 @@
-#include "Isistema.h"
+#include "ISistema.h"
 
-Isistema::~Isistema(){}
+ISistema::~ISistema(){}

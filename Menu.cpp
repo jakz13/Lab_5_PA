@@ -1,3 +1,4 @@
+#pragma once
 #include "Menu.h"
 #include "List.h"
 #include "IIterator.h"
@@ -6,10 +7,11 @@
 #include "MenuProducto.h"
 #include "Producto.h"
 
-Menu::Menu(std::string codigo, std::string descripcion){
+Menu::Menu(string codigo, string descripcion){
     this->id = codigo;
     this->descripcion = descripcion;
     this->menuProductos = new List();   
+    this->precio = 0;
 }
 
 Menu::~Menu() {

@@ -14,7 +14,7 @@ private:
     IDictionary* mesasActivas; // ICollection<Mesa*>
     ICollection* ventasMesa; // ICollection<VentaMesa*>
 public:
-    Mozo(int id, string nombre);
+    Mozo(int id ,string nombre);
     ICollection* getMesas();
     //void asignarVenta(Venta* v);
     void agregarVentaAMozo(VentaMesa* v);
@@ -23,6 +23,7 @@ public:
     IDictionary* getMesasAsignadas();
     IDictionary* getMesasDisponibles();
     IDictionary* getMesasActivas();
+    void incrementarCantidad(int cant);
 
 };
 

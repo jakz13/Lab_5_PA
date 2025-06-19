@@ -18,3 +18,15 @@ class Sistema : public ISistema {
 };
 
 #endif
+
+void agregarProducto(Producto* producto);
+    void agregarProductoElegido(Producto* producto);
+    void agregarProductoSimple(Producto* producto);
+    void agregarMenu(Menu* menu);
+    void agregarVentas(Venta* venta);
+    void agregarVentaActiva(Venta* venta);
+    void agregarVentaFacturada(Venta* venta);
+    void agregarMesa(Mesa* mesa);
+    void agregarMesaElegida(Mesa* mesa);
+    void agregarEmpleado(Empleado* empleado);
+    

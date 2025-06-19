@@ -1,3 +1,4 @@
+#pragma once
 #include "ICollection/collections/List.h"
 #include "VentaProducto.h"
 #include "Producto.h"

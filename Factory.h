@@ -1,19 +1,17 @@
 #pragma once
-#include "ProductoSimple.h"
-#include "MenuProducto.h"
-#include "Venta.h"
-#include "Mesa.h"
 #include <string>
+#include "ProductoSimple.h"
+#include "Menu.h"
+#include "ISistema.h"
+#include "Sistema.h"
+#include<iostream>
+using namespace std;
 
 class Factory {
-private:
-    static Factory* instancia;
-    Factory();
-public:
-    static Factory* getInstancia();
+    public:
+        static ISistema * getSistema();
+        Producto* crearProductoSimple(string id, string descripcion, float precio);
+        Producto* crearMenu(string id, string descripcion);
 
-    Producto* crearProductoSimple(std::string id, std::string descripcion, float precio);
-    Producto* crearMenuProducto(std::string id, std::string descripcion, float precio);
-    Venta* crearVenta(std::string idVenta);
-    Mesa* crearMesa(int numero);
 };
+

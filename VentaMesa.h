@@ -1,6 +1,4 @@
-#ifndef VENTA_MESA_H
-#define VENTA_MESA_H
-
+#pragma once
 #include "Venta.h"
 #include "Mesa.h"
 #include "ICollection/collections/List.h"
@@ -34,4 +32,3 @@ public:
     virtual ~VentaMesa();
 };
 
-#endif // VENTA_MESA_H

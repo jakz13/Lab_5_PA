@@ -1,5 +1,4 @@
-#ifndef EMPLEADO_H
-#define EMPLEADO_H
+#pragma once
 #include "ICollection/collections/List.h"
 #include <iostream>
 using namespace std;
@@ -11,9 +10,8 @@ protected:
 public:
     Empleado();
     Empleado(int id, string nombre);
-    int getId() const;
-    string getNombre() const;
+    int getId() ;
+    string getNombre();
 };
 
 
-#endif

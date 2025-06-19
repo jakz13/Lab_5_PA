@@ -1,9 +1,11 @@
+#pragma once
 #include "Mesa.h"
 
 Mesa::Mesa(int numero){
     this->numero =numero;
     this->mozo = NULL;
     this->ventaMesaActiva = NULL;
+    this->asignada = false;
 }
 DtMesa* Mesa::getDatos() const {
     return new DtMesa(numero, ventaMesaActiva, mozo);
@@ -28,4 +30,18 @@ void Mesa::confirmarQuitar(Producto* p,int cantidad){
     }
 }
 
+bool Mesa::getasignada(){
+    return asignada;
+}
 
+void Mesa::agregarMozo(Mozo* mozo){
+    this->mozo = mozo;
+}
+
+Mozo* Mesa::getMozo(){
+    return mozo;
+}
+
+void Mesa::asinadaTrue(){
+    this->asignada = true;
+}

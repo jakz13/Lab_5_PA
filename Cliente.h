@@ -1,14 +1,20 @@
 #pragma once
 #include <string>
+#include<iostream>
+#include "DtDireccion.h"
+#include "DtCliente.h"
+#include "ICollection/interfaces/ICollectible.h"
+using namespace std;
 
-class Cliente {
+class Cliente :public ICollectible {
 private:
-    std::string telefono;
-    std::string nombre;
-    std::string direccion;
+    string telefono;
+    string nombre;
+    DtDireccion* direccion;
 public:
-    Cliente(std::string telefono, std::string nombre, std::string direccion);
-    std::string getTelefono() const;
-    std::string getNombre() const;
-    std::string getDireccion() const;
+    Cliente(string telefono, string nombre, DtDireccion* direccion);
+    string getTelefono() const;
+    string getNombre() const;
+    DtDireccion* getDireccion() const;
+    DtCliente* getDatos();
 };

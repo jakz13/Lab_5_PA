@@ -2,19 +2,6 @@
 #include "Sistema.h"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 void mostrarMenu() {
     std::cout << "1. Administrador" << std::endl;
     std::cout << "2. Mozo" << std::endl;

@@ -1,60 +1,50 @@
-#ifndef IsISTEMA_H
-#define IsISTEMA_H
+#pragma once
+#include "Sistema.h"
 
 #include <iostream>
 using namespace std;
 
-class Isistema {
+class ISistema {
     public:
-        ~Isistema();
+        ~ISistema();
 
-        void agregarProducto(Producto* producto);
-    void agregarProductoElegido(Producto* producto);
-    void agregarProductoSimple(Producto* producto);
-    void agregarMenu(Menu* menu);
-    void agregarVentas(Venta* venta);
-    void agregarVentaActiva(Venta* venta);
-    void agregarVentaFacturada(Venta* venta);
-    void agregarMesa(Mesa* mesa);
-    void agregarMesaElegida(Mesa* mesa);
-    void agregarEmpleado(Empleado* empleado);
-    
-    IDictionary* getProductos() const;
-    ICollection* getProductosElegidos() const;
-    ICollection* getProductosSimples() const;
-    ICollection* getMenus() const;
-    IDictionary* getVentas() const;
-    ICollection* getVentasActivas() const;
-    ICollection* getVentasFacturadas() const;
-    IDictionary* getMesas() const;
-    ICollection* getMesasElegidas() const;
-    IDictionary* getEmpleados() const;
-
-
-    void ingresarMenu(int codigo, string descripcion);
-    ICollection* listarProductosSimples();
-    void seleccionarProducto(string** id, int** cant);
-    void altamenu();
-    void ingresarProducto(int codigo, string descripcion, float precio);
-    void altaProducto();
-    void numeroMesa(int numero);
-    void ingresarDescuento(float porcentaje);
-    DtFactura emitirFactura(Mesa* mesa);
-    ICollection* listarProductos();
-    void seleccionarProducto(string id);
-    void bajaProductoVenta();
-    ICollection* ingresarMozo(string id);
-    void seleccionarMesa (int** numero);
-    ICollection* listarMesas();
-    void crearVentaMesa();
-    void agregarProducto (string id, int cant);
-    void confirmarAgregar();
-    void confirmarQuitar();
-    ICollection* numeroMesaQuitar(int numero);
-    void quitarProducto(string id, int cantidad);
-    bool comprobarSiExisteProducto(Producto* producto);
-    void desvincularTodo();
-    void numeroMesaAgregar(int numero);
+    virtual void ingresarMenu(string codigo, string descripcion) = 0;
+    virtual ICollection* listarProductosSimples() = 0;
+    virtual void seleccionarProducto(string codigo, int cant) = 0;
+    virtual void altamenu() = 0;
+    virtual void cancelarAltaMenu()= 0;
+    virtual void ingresarProducto(string codigo, string descripcion, float precio)= 0;
+    virtual void altaProducto() = 0;
+    virtual void cancelarAltaProducto() = 0;
+    virtual void numeroMesa(int numero) = 0;
+    virtual float getDescuento() = 0;
+    virtual void ingresarDescuento(float porcentaje) = 0;
+    virtual DtFactura* emitirFactura()= 0;
+    virtual void ingresarFechaActual(DtFecha* f) = 0;
+    virtual ICollection* listarProductos() = 0;
+    virtual void seleccionarProducto(string id) = 0;
+    virtual void bajaProductoVenta() = 0;
+    virtual ICollection* ingresarMozo(string id) = 0;
+    virtual void seleccionarMesa (ICollection* numero) = 0;
+    virtual ICollection* listarMesas() = 0;
+    virtual void crearVentaMesa() = 0;
+    virtual void numeroMesaAgregar(int numero) = 0;
+    virtual void agregarProducto (string id, int cant) = 0;
+    virtual void confirmarAgregar() = 0;
+    virtual ICollection* numeroMesaQuitar(int numero) = 0;
+    virtual void quitarProducto(string id, int cantidad) = 0;
+    virtual void confirmarQuitar(Producto* p, int cantidad) = 0;
+    virtual DtCliente* ingresarDatosCliente(string telefono, string nombre, DtDireccion* direccion) = 0;
+    virtual void altaCliente() = 0;
+    virtual void cancelarAltaCliente() = 0;
+    virtual void ingresarNombreEmpleado(string nombre) = 0;
+    virtual ICollection* listarTransporte() = 0;
+    virtual void elegirTransporte (MedioTransporte* medio) = 0;
+    //void crearListaTransporte();
+    virtual void altaRepartidor() = 0;
+    virtual void cancelarAltaRepartidor() = 0;
+    virtual void altaMozo() = 0;
+    virtual ICollection* asignarMesasAMozo() = 0;
+    virtual bool existeCliente (string telefono) = 0;
 };
 
-#endif
