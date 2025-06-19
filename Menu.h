@@ -17,11 +17,13 @@ private:
 public:
     Menu(std::string codigo, std::string descripcion);
     ~Menu();
-    DtMenu getDatos() const;
+    DtMenu* getDatos();
     float getPrecio();
     void agregarProducto(MenuProducto* mProd);
     void borrarProducto();
-    bool comprobarSiExisteProducto(ProductoSimple* p);
+    bool comprobarSiExisteProductoEnMenu(ProductoSimple* p);
     bool tieneMasProductos();
-    void desvincular();
+    void desvincularMP(MenuProducto* mp);
+    void desvincularTodo();
+    ICollection* getProductos();
 };

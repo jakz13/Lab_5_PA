@@ -2,6 +2,7 @@
 #include "Producto.h"
 #include "Venta.h"
 #include "DtProductoConsumido.h"
+#include "ICollection/interfaces/ICollection.h"
 
 class VentaProducto : public ICollectible {
 private:

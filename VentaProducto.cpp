@@ -8,7 +8,7 @@ VentaProducto::VentaProducto(Producto* producto, Venta* venta, float precio, int
 }
 
 void VentaProducto::incrementarCantidad(int cant) {
-    this->cantidad = this->cantidad += cant;
+    this->cantidad += cant;
 }
 
 int VentaProducto::getCantidad() const {
@@ -45,3 +45,11 @@ float VentaProducto::getPrecio() const{
     return this->precio;
 }
 
+void VentaProducto::desvincularDeVenta() {
+    this->venta->desvincular(this);
+    this->venta = nullptr;
+}
+
+VentaProducto::~VentaProducto(){
+    
+}

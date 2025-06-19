@@ -1,35 +1,21 @@
-/*#pragma once
+#pragma once
 #include "ICollection/collections/List.h"
 #include "Venta.h"
+#include "DtMesa.h"
 
 class Mesa : public ICollectible {
 private:
-    Venta* ventaMesaActiva;
+    VentaMesa* ventaMesaActiva;
     Mozo* mozo;
     int numero;
 public:
     Mesa(int numero);
-    int getNumero() const;
-    Venta* encontrarVenta();
-    void confirmarQuitar();
+    DtMesa* getDatos() const;
+    VentaMesa* encontrarVenta();
+    int getNumero();
+    void confirmarQuitar(Producto* p, int cantidad);
     void agregarVenta (VentaMesa* v);
     void AgregarProducto(Producto* p, int  cant);
-};*/
-
-#pragma once
-
-#include "Venta.h"
-#include <string>
-
-class Mesa : public ICollectible {
-private:
-    int numero;
-    Venta* ventaActual;
-public:
-    Mesa(int numero);
-    ~Mesa();
-
-    int getNumero() const;
-    Venta* getVentaActual() const;
-    void asignarVenta(Venta* venta);
 };
+
+

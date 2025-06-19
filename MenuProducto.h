@@ -13,16 +13,16 @@
 
 class MenuProducto : public ICollectible{
 private:
-    Producto* producto;
+    ProductoSimple* producto;
     Menu* menu;
     int cantidad;
 public:
-    MenuProducto(Producto* producto, Menu* menu, int cantidad);
+    MenuProducto(ProductoSimple* producto, Menu* menu, int cantidad);
     void incrementarCantidad(int cant);
     bool comprobarSiExisteProducto(Producto* p);
     void desvincularDeMenu();
     void desvincularDeProducto();
     int getCantidad();
-    Producto* getProducto();
+    ProductoSimple* getProducto();
     ~ MenuProducto();
 };

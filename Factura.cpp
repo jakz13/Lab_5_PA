@@ -3,7 +3,7 @@
 int Factura::contador = 1;
 
 
-Factura::Factura(DtFecha fecha, float totalFinal, float iva, float totalDescuento, ICollection* productos){
+Factura::Factura(DtFecha* fecha, float totalFinal, float iva, float totalDescuento, ICollection* productos){
     this->contador = contador;
     contador++;
     this->totalFinal = totalFinal;

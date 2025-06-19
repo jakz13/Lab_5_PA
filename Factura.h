@@ -13,7 +13,7 @@ private:
     float totalDescuento;
     ICollection* productos; // ICollection<DtProducto*>
 public:
-    Factura(DtFecha fecha, float totalFinal, float iva, float totalDescuento, ICollection* productos);
+    Factura(DtFecha* fecha, float totalFinal, float iva, float totalDescuento, ICollection* productos);
     int getId();
     DtFecha* getFecha();
     float getTotal();

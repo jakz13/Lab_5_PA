@@ -39,6 +39,8 @@ Sistema::~Sistema() {
     delete empleados;
 }
 
+
+//ALTA PRODUCTO
 void Sistema::ingresarMenu(string codigo, string descripcion){
     this->menuTemporal = new Menu (codigo, descripcion);
 }
@@ -48,8 +50,10 @@ ICollection* Sistema::listarProductosSimples(){
     IIterator* it = productosSimples->getIterator();
     while (it->hasCurrent()){
         ProductoSimple* prod = dynamic_cast<ProductoSimple*>(it->getCurrent());
-        DtProductoSimple* dtP = new DtProductoSimple(prod->getId(), prod->getDescripcion(),prod->getPrecio());
-        resultado->add(prod);
+
+        DtProductoSimple* dtP = prod->getDatos();
+        
+        resultado->add(dtP);
 
         it->next();
     }
@@ -71,7 +75,8 @@ bool Sistema::seleccionarProducto(string codigo, int cant){
         ProductoSimple* prod =dynamic_cast<ProductoSimple*>(p);
 
         MenuProducto* mProd = new MenuProducto (prod, this->menuTemporal, cant);
-        this->menuTemporal->agregarProducto(mProd);
+        this->menuTemporal->getProductos()->add(mProd);
+        prod->getMenuProductos()->add(mProd);
 
         ok = true;
     }
@@ -88,6 +93,25 @@ void Sistema::altamenu(){
     this->menuTemporal = nullptr;
 }
 
+void Sistema::cancelarAltaMenu(){
+    Menu* menu = this->menuTemporal;
+    IIterator* it = menu->getProductos()->getIterator();
+    while(it->hasCurrent()){
+        MenuProducto* mp = dynamic_cast<MenuProducto*>(it->getCurrent());
+        IIterator* it2 = mp->getProducto()->getMenuProductos()->getIterator();
+        while(it2->hasCurrent()){
+            MenuProducto* mp2 =dynamic_cast<MenuProducto*>(it2->getCurrent());
+            mp2->~MenuProducto();
+            it->next();
+        }
+        delete it2;
+    }
+    delete it;
+    delete menu;
+    this->menuTemporal = nullptr;
+
+}
+
 void Sistema::ingresarProducto(string codigo, string descripcion, float precio){
     this->prodTemporal = new ProductoSimple (codigo, descripcion, precio);
 }
@@ -100,6 +124,13 @@ void Sistema::altaProducto(){
     this->prodTemporal = nullptr;
 }
 
+void Sistema::cancelarAltaProducto(){
+    this->prodTemporal = nullptr;
+}
+
+
+
+// FACTURACIÓN DE UNA VENTA
 void Sistema::numeroMesa(int numero){
     IKey* clave = new Integer (numero);
     if (mesas->member(clave)){
@@ -135,53 +166,22 @@ DtFactura* Sistema::emitirFactura(){
 }
 
 
+//BAJA PRODUCTO (FALTAN LOS DESTROY)
 
-
-
-
-
-
-
-
-void Sistema::agregarProducto(Producto* producto){
-    IKey* clave = new StringKey (producto->getId());
-
-    this->productos->add(clave,producto);
-}
-
-void Sistema::agregarMenu(Menu* menu){
-    this->menus->add(menu);
-}
-
-/*void Sistema::agregarVenta(Venta* venta){ 
-    IKey* clave = venta->getId();       
-    this->ventas->add(venta);
-}*/
-
-
-// Aquí irían los métodos de casos de uso, alta, baja, buscar, etc.
-
-ICollection* Sistema::listarProductosSimples(){
-
-    IIterator* it = productosSimples->getIterator();
-    while (it->hasCurrent()){
-        it->
-
-    }
-}
-
-
-//baja producto
 ICollection* Sistema::listarProductos(){
     ICollection* SetDtprod = new List();
     IIterator* it = productos->getIterator();
     while (it->hasCurrent()){
         Producto* prod = (Producto*)it->getCurrent();
         if (dynamic_cast<ProductoSimple*>(prod)){
-            DtProductoSimple* DtProd = new DtProductoSimple(prod->getDatos());
-
+            DtProductoSimple* DtProd = new DtProductoSimple(prod->getId(),prod->getDescripcion(), prod->getPrecio());
+            SetDtprod->add(DtProd);
         }
-        SetDtprod->add(DtProd);
+        else if (dynamic_cast<Menu*>(prod)){
+            Menu* menu = dynamic_cast<Menu*>(prod);
+            DtMenu* DtM = new DtMenu(menu->getId(),menu->getDescripcion(), menu->getPrecio(), menu->getProductos());
+            SetDtprod->add(DtM);
+        }
         
         it->next();
     }
@@ -191,9 +191,11 @@ ICollection* Sistema::listarProductos(){
 
 void Sistema::seleccionarProducto(string id){
     IKey* clave = new StringKey(id);
-    this->bajarProducto = dynamic_cast<Producto*>(productos->find(clave));
-    delete clave;
-}
+    if (productos->member(clave)){
+        ICollectible* p = productos->find(clave);
+        this->bajarProducto = dynamic_cast<Producto*>(p);
+    }
+} 
 
 void Sistema::bajaProductoVenta(){
     Producto* prod = this->bajarProducto;
@@ -207,18 +209,147 @@ void Sistema::bajaProductoVenta(){
     }
 
     if (!ok){
-        IKey* clave = new StringKey (prod->getId());
-        Producto* p = dynamic_cast<Producto*>(productos->find(clave));
-
-        if (dynamic_cast<Producto*>(p)){
-            p->desvincularTodo();
-            productos->remove(clave);
-            delete p;
+        if (dynamic_cast<ProductoSimple*>(prod)){
+            ProductoSimple* prodSim = dynamic_cast<ProductoSimple*>(prod);
+            prodSim->desvincularTodo();
         }
-        else if (dynamic_cast<Menu*>(p)){
-            p->
+        else if (dynamic_cast<Menu*>(prod)){
+            Menu* menu = dynamic_cast<Menu*>(prod);
+            menu->desvincularTodo();
         }
         
     }
 
 }
+
+//INICIAR VENTA EN MESA
+
+ICollection* Sistema::ingresarMozo(string id){
+    IKey* clave = new StringKey(id);
+    ICollectible* m = empleados->find(clave);
+    Mozo* mozo = dynamic_cast<Mozo*>(m);
+    this->mozoIniVenta = mozo;
+    return mozo->getDatosMesa();
+}
+
+void Sistema:: seleccionarMesa(ICollection* numero){
+    IKey* clave;
+    IIterator* it = numero->getIterator();
+    while (it->hasCurrent()){
+        Integer* num = dynamic_cast<Integer*>(it->getCurrent());
+        if (num != nullptr){
+            clave = num;
+            mesasElegidas->add(mesas->find(clave));
+        }
+        
+        it->next();
+    }
+    delete clave;
+    delete it;
+}
+
+ICollection* Sistema::listarMesas(){
+    ICollection* SetDtMesas;
+    IIterator* it = mesasElegidas->getIterator();
+    while(it->hasCurrent()){
+        Mesa* m = dynamic_cast<Mesa*>(it->getCurrent());
+        SetDtMesas->add(m->getDatos());
+
+        it->next();
+    }
+    delete it;
+    return SetDtMesas;
+}
+
+void Sistema::crearVentaMesa(){
+    Mozo * mozo= this->mozoIniVenta;
+    VentaMesa* venMesa = new VentaMesa(mozo);
+    IIterator* it = mesasElegidas->getIterator();
+    while (it->hasCurrent()){
+        Mesa* mesa = dynamic_cast<Mesa*>(it->getCurrent());
+        venMesa->agregarMesaAVenta(mesa);
+
+        it->next();
+    }
+    mozo->agregarVentaAMozo(venMesa);
+}
+
+//AGREGAR PRODUCTO A UNA VENTA
+
+void Sistema::numeroMesaAgregar(int num){
+    IKey* clave = new Integer(num);
+    Mesa* mesa = dynamic_cast<Mesa*>(mesas->find(clave));
+    this->mesaAgregarProd = mesa;
+}
+
+void Sistema::agregarProducto(string id, int cant){
+    IKey* clave = new StringKey(id);
+    if (productos->member(clave)){
+        Producto* prod =dynamic_cast<Producto*>(productos->find(clave));
+        this->prodAAgregar= prod;
+        this->cantidad = cant;
+    }
+}
+
+void Sistema::confirmarAgregar(){
+    Mesa* mesa = mesaAgregarProd;
+    mesa->AgregarProducto(prodAAgregar, cantidad);  
+}
+ 
+//QUITARR PRODUCTOS DE UNA VENTA
+
+ICollection* Sistema::numeroMesaQuitar(int numero){
+    IKey* clave = new Integer(numero);
+    if (mesas->member(clave)){
+        ICollectible* m = mesas->find(clave);
+        Mesa* mesa = dynamic_cast<Mesa*>(m);
+        this->mesaAgregarProd = mesa;
+        Venta* venta = mesa->encontrarVenta();
+        return venta->datosVentaProducto();
+    }
+}
+
+void Sistema::quitarProducto(string id, int cantidad){
+    IKey* clave = new StringKey(id);
+    if(productos->member(clave)){
+        this->quitar =dynamic_cast<Producto*> (productos->find(clave));
+        this->cantidad = cantidad;
+        return;
+    }
+}
+
+
+void Sistema::confirmarQuitar(Producto* p, int cantidad){
+    this->mesaAgregarProd->confirmarQuitar(p,cantidad);
+}
+
+
+
+
+
+
+
+
+void Sistema::agregarMenu(Menu* menu){
+    this->menus->add(menu);
+}
+
+/*void Sistema::agregarVenta(Venta* venta){ 
+    IKey* clave = venta->getId();       
+    this->ventas->add(venta);
+}*/
+
+
+// Aquí irían los métodos de casos de uso, alta, baja, buscar, etc.
+
+
+
+//baja producto
+
+
+void Sistema::seleccionarProducto(string id){
+    IKey* clave = new StringKey(id);
+    this->bajarProducto = dynamic_cast<Producto*>(productos->find(clave));
+    delete clave;
+}
+

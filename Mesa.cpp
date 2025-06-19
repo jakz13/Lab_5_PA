@@ -1,56 +1,31 @@
-/*#include "Mesa.h"
+#include "Mesa.h"
 
 Mesa::Mesa(int numero){
     this->numero =numero;
     this->mozo = NULL;
     this->ventaMesaActiva = NULL;
 }
-
-int Mesa::getNumero() const {
-    return numero;
+DtMesa* Mesa::getDatos() const {
+    return new DtMesa(numero, ventaMesaActiva, mozo);
 }
 
-Venta* Mesa::encontrarVenta(){
+VentaMesa* Mesa::encontrarVenta(){
     return this->ventaMesaActiva;
 }
 
-/*void Mesa::agregarMesaAventa() {
-    // Lógica para agregar la mesa a una venta
-}*/
-
-/*Venta* Mesa::encontrarVenta() {
-    // Lógica para encontrar la venta asociada a la mesa
-    return nullptr;
-}*/
-
-/*void Mesa::confirmarQuitar() {
-    // Lógica para confirmar quitar la mesa de una venta
+int Mesa::getNumero(){
+    return this->numero;
 }
+
 
 void Mesa::AgregarProducto(Producto* producto, int cant){
-    
-}*/
-
-#include "Mesa.h"
-
-Mesa::Mesa(int numero) {
-    this->numero = numero;
-    this->ventaActual = nullptr;
+    this->ventaMesaActiva->agregarProducto(producto,cant);
 }
 
-Mesa::~Mesa() {
-    if (ventaActual != nullptr)
-        delete ventaActual;
+void Mesa::confirmarQuitar(Producto* p,int cantidad){
+    if(this->ventaMesaActiva->comprobarSiExisteProducto(p)){
+        ventaMesaActiva->borrarProdVenta(p,cantidad);
+    }
 }
 
-int Mesa::getNumero() const {
-    return numero;
-}
 
-Venta* Mesa::getVentaActual() const {
-    return ventaActual;
-}
-
-void Mesa::asignarVenta(Venta* venta) {
-    this->ventaActual = venta;
-}

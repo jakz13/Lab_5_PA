@@ -32,13 +32,19 @@ private:
     ICollection* mesasElegidas;
     IDictionary* empleados;
 
-    Producto* bajarProducto;
 
+    Producto* bajarProducto;
     Menu* menuTemporal;
     ProductoSimple* prodTemporal;
     Mesa* mesaAFacturar;
     float descuento;
     DtFecha* fecha;
+    ICollection* mesasElegidas;
+    Mozo* mozoIniVenta;
+    Mesa* mesaAgregarProd;
+    Producto* prodAAgregar;
+    Producto* quitar;
+    int cantidad;
 
 public:
     
@@ -72,30 +78,30 @@ public:
     ICollection* listarProductosSimples();
     bool seleccionarProducto(string codigo, int cant);
     void altamenu();
+    void cancelarAltaMenu();
     void ingresarProducto(string codigo, string descripcion, float precio);
     void altaProducto();
+    void cancelarAltaProducto();
     void numeroMesa(int numero);
     float getDescuento();
     void ingresarDescuento(float porcentaje);
     DtFactura* emitirFactura();
     void ingresarFechaActual(DtFecha* f);
-
-
     ICollection* listarProductos();
     void seleccionarProducto(string id);
     void bajaProductoVenta();
     ICollection* ingresarMozo(string id);
-    void seleccionarMesa (int** numero);
+    void seleccionarMesa (ICollection* numero);
     ICollection* listarMesas();
     void crearVentaMesa();
+    void numeroMesaAgregar(int numero);
     void agregarProducto (string id, int cant);
     void confirmarAgregar();
-    void confirmarQuitar();
     ICollection* numeroMesaQuitar(int numero);
     void quitarProducto(string id, int cantidad);
-    bool comprobarSiExisteProducto(Producto producto);
-    void desvincularTodo();
-    void numeroMesaAgregar(int numero);
+    void confirmarQuitar(Producto* p, int cantidad);
+    
+
     //FALTA AGREGAR MÁS FUNCIONES 
     // Otros métodos según sea necesario
 };

@@ -11,16 +11,16 @@
 #include <iostream>
 
 // Constructor
-VentaMesa::VentaMesa(int id, Mozo* mozo) {
-    this->id = id;
-    this->mesas = new List();
+
+VentaMesa::VentaMesa(Mozo* mozo) {
     this->ventaProductos = new List();
     this->mozo = mozo; // Inicializa el mozo como nullptr
-    }
+}
 
 // Agrega una mesa a la venta
 void VentaMesa::agregarMesaAVenta(Mesa* mesa) {
-    this->mesas->add(mesa);
+    IKey* clave = new Integer (mesa->getNumero());
+    this->mesas->add(clave,mesa);
     mesa->agregarVenta(this);
 }
 
@@ -45,7 +45,7 @@ Mozo* VentaMesa::getMozo() {
     return this->mozo;
 }
 
-ICollection* VentaMesa::getDatos() {
+/*ICollection* VentaMesa::getDatos() {
    IIterator* it = this->ventaProductos->getIterator();
    ICollection* SetDtProducto;
    while (it->hasCurrent()){
@@ -53,12 +53,8 @@ ICollection* VentaMesa::getDatos() {
         SetDtProducto->add(vp->pedirDatosAProducto());
    }
 
-}
+}*/
 
-void VentaMesa::borrarProdVenta(string id, int cantidad) {
-    IIterator* it=this->ventaProductos->getIterator();
-    
-}
 
 // Busca una venta asociada a una mesa
 bool VentaMesa::encontrarVenta(Mesa* mesa)  {
@@ -108,7 +104,6 @@ DtFactura* VentaMesa::facturar(DtFecha* fecha, float porcentaje){
 
 
 
-
 void VentaMesa::incrementarCantidad(int cant) {
     IIterator* it = this->ventaProductos->getIterator();
     while (it->hasCurrent()) {
@@ -119,7 +114,7 @@ void VentaMesa::incrementarCantidad(int cant) {
     delete it;
 }
 
-VentaMesa::~VentaMesa() {
+/*VentaMesa::~VentaMesa() {
     IIterator* it = this->mesas->getIterator();
     while (it->hasCurrent()) {
         Mesa* mesa = (Mesa*)it->getCurrent();
@@ -131,4 +126,26 @@ VentaMesa::~VentaMesa() {
     delete this->mesas;
     delete this->ventaProductos;
 }
+*/
 
+void VentaMesa::agregarProducto(Producto* p, int cantidad){
+    bool existe = false;
+    IIterator* it = ventaProductos->getIterator();
+    while (it->hasCurrent()){
+        VentaProducto* vp = dynamic_cast<VentaProducto*>(it->getCurrent());
+        if (vp->comprobarSiExisteProducto(p)){
+            vp->incrementarCantidad(cantidad);
+            existe = true;
+        }
+
+        it->next();
+    }
+
+    if(!existe){
+        VentaProducto* vpnew = new VentaProducto(p,this, p->getPrecio(), cantidad);
+        p->agregarVentaProducto(vpnew);
+        this->agregarVentaProducto(vpnew);
+    }
+
+    delete it;
+}
