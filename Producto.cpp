@@ -1,6 +1,11 @@
 #include "Producto.h"
 
 
+Producto::Producto() { }
+
+Producto::~Producto() { }
+
+
 Producto::Producto(string id, string descripcion, float precio){
     this->id= id;
     this->descripcion = descripcion;

@@ -1,18 +1,30 @@
-#pragma once
-#include "ICollection/collections/List.h"
+#ifndef DTPRODUCTO_H
+#define DTPRODUCTO_H
+
+#include "ICollection/interfaces/ICollectible.h"
 #include <string>
+
+// Forward declarations
+class DtProducto;
+class DtMenu;
+class DtMenuProducto;
+
+#include <string>
+using namespace std;
 
 class DtProducto : public ICollectible{
 protected:
-    std::string id;
-    std::string descripcion;
+    string id;
+    string descripcion;
     float precio;
 public:
     DtProducto();
-    DtProducto(std::string id, std::string descripcion, float precio);
-    std::string getId() const;
-    std::string getDescripcion() const;
+    DtProducto(string id, string descripcion, float precio);
+    string getId() const;
+    string getDescripcion() const;
     float getPrecio() const;
     virtual DtProducto* getDatos() = 0;
     virtual void imprimirProducto() = 0;
+    ~DtProducto();
 };
+#endif // DTPRODUCTO_H

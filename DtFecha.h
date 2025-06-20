@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DTFECHA_H
+#define DTFECHA_H
 
 class DtFecha {
 private:
@@ -16,3 +17,5 @@ public:
     int getHora() const;
     int getMinuto() const;
 };
+
+#endif // DTFECHA_H

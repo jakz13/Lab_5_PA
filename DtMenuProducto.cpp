@@ -2,6 +2,7 @@
 using namespace std;
 #include "DtMenuProducto.h"
 
+
 DtMenuProducto::DtMenuProducto(DtProducto* producto,DtMenu* menu ,int cantidad){
    this->producto = producto;
    this->cantidad = cantidad;

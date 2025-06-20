@@ -1,8 +1,12 @@
-#pragma once
+#ifndef DTAPARTAMENTO_H
+#define DTAPARTAMENTO_H
+
 #include <string>
-#include<iostream>
+#include <iostream>
 using namespace std;
 #include "DtDireccion.h"
+
+
 
 class DtApartamento : public DtDireccion{
 private:
@@ -16,3 +20,4 @@ public:
 };
 
 
+#endif // DTAPARTAMENTO_H

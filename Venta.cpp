@@ -1,5 +1,6 @@
 #include "Venta.h"
 
+int Venta::contador = 0;
 
 Venta::Venta(){
     this->id = contador++;
@@ -7,6 +8,8 @@ Venta::Venta(){
     this->descuento = 0;
     this->ventaProductos = nullptr;
 }
+
+
 
 
 Venta::~Venta() {

@@ -1,14 +1,15 @@
 #include "Sistema.h"
-#include "IKey.h"
+
 
 Sistema * Sistema::instance = NULL;
-
-Sistema::Sistema() {
-    // Constructor privado para evitar instanciación externa
-}
+int Sistema::contador = 0;
 
 Sistema::~Sistema() {
 
+}
+
+float Sistema::getDescuento() {
+    return this->descuento;
 }
 
 Sistema * Sistema::getInstance() {
@@ -31,13 +32,7 @@ Sistema::Sistema() {
 }
 
 
-Sistema::~Sistema() {
-    delete productos;
-    delete menus;
-    delete ventas;
-    delete mesas;
-    delete empleados;
-}
+
 
 
 //ALTA PRODUCTO
@@ -67,7 +62,7 @@ IDictionary* Sistema::getProductos() const{
 }
 
 void  Sistema::seleccionarProducto(string codigo, int cant){
-    ICollection* DtProductosElegidos;
+    /*ICollection* DtProductosElegidos;
     IKey* clave = new StringKey (codigo);
     IIterator* it = this->productos->getIterator();
     if(productos->member(clave)){
@@ -77,11 +72,11 @@ void  Sistema::seleccionarProducto(string codigo, int cant){
   
     }
     delete clave;
-    delete it;
+    delete it;*/
 }
 
 void Sistema::altamenu(){
-    IKey* clave = new StringKey (menuTemporal->getId());
+    /*IKey* clave = new StringKey (menuTemporal->getId());
     IIterator* it = productosElegidos->getIterator();
     while (it->hasCurrent()){
         DtProductoElegido* dt  = dynamic_cast<DtProductoElegido*>(it->getCurrent());
@@ -108,7 +103,7 @@ void Sistema::altamenu(){
         it->hasCurrent();
     }
     delete it;
-    delete clave;
+    delete clave;*/
 }
 
 void Sistema::cancelarAltaMenu(){
@@ -133,11 +128,11 @@ void Sistema::ingresarProducto(string codigo, string descripcion, float precio){
 }
 
 void Sistema::altaProducto(){
-    IKey* clave = new StringKey (prodTemporal->getId());
+/*    IKey* clave = new StringKey (prodTemporal->getId());
     this->productos->add(clave, this->prodTemporal);
     this->productosSimples->add(this->prodTemporal);
 
-    this->prodTemporal = nullptr;
+    this->prodTemporal = nullptr;*/
 }
 
 void Sistema::cancelarAltaProducto(){
@@ -206,12 +201,12 @@ ICollection* Sistema::listarProductos(){
 }
 
 void Sistema::seleccionarProducto(string id){
-    IKey* clave = new StringKey(id);
+   /* IKey* clave = new StringKey(id);
     if (productos->member(clave)){
         ICollectible* p = productos->find(clave);
         this->bajarProducto = dynamic_cast<Producto*>(p);
-    }
-} 
+    }*/
+}
 
 void Sistema::bajaProductoVenta(){
     Producto* prod = this->bajarProducto;
@@ -240,12 +235,12 @@ void Sistema::bajaProductoVenta(){
 
 //INICIAR VENTA EN MESA
 
-ICollection* Sistema::ingresarMozo(string id){
+ICollection* Sistema::ingresarMozo(string id){/*
     IKey* clave = new StringKey(id);
     ICollectible* m = empleados->find(clave);
     Mozo* mozo = dynamic_cast<Mozo*>(m);
     this->mozoIniVenta = mozo;
-    return mozo->getDatosMesa();
+    return mozo->getDatosMesa();*/
 }
 
 void Sistema:: seleccionarMesa(ICollection* numero){
@@ -299,12 +294,12 @@ void Sistema::numeroMesaAgregar(int num){
 }
 
 void Sistema::agregarProducto(string id, int cant){
-    IKey* clave = new StringKey(id);
+/*    IKey* clave = new StringKey(id);
     if (productos->member(clave)){
         Producto* prod =dynamic_cast<Producto*>(productos->find(clave));
         this->prodAAgregar= prod;
         this->cantidad = cant;
-    }
+    }*/
 }
 
 void Sistema::confirmarAgregar(){
@@ -326,12 +321,12 @@ ICollection* Sistema::numeroMesaQuitar(int numero){
 }
 
 void Sistema::quitarProducto(string id, int cantidad){
-    IKey* clave = new StringKey(id);
+    /*IKey* clave = new StringKey(id);
     if(productos->member(clave)){
         this->quitar =dynamic_cast<Producto*> (productos->find(clave));
         this->cantidad = cantidad;
         return;
-    }
+    }*/
 }
 
 
@@ -348,10 +343,11 @@ DtCliente* Sistema:: ingresarDatosCliente(string telefono, string nombre, DtDire
 
 
 void Sistema:: altaCliente(){
-    IKey* clave = new StringKey(clienteTemporal->getTelefono());
+/*    IKey* clave = new StringKey(clienteTemporal->getTelefono());
     clientes->add(clave, clienteTemporal);
     clienteTemporal = nullptr;
-}
+*/
+    }
 
 void Sistema:: cancelarAltaCliente(){
     clienteTemporal = nullptr;
@@ -455,11 +451,11 @@ ICollection* Sistema::asignarMesasAMozo(){
 
 //VENTA A DOMICILIO
 bool Sistema:: existeCliente(string telefono){
-    IKey* clave = new StringKey(telefono);
+/*    IKey* clave = new StringKey(telefono);
     if(clientes->member(clave)){
         return true;
     }
-    return false;
+    return false;*/
 }
 
 //LISTAR PRODUCTO Y SELECIONAR YA ESTA IMPLEMENNTADA

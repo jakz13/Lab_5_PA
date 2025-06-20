@@ -1,4 +1,3 @@
-#pragma once
 #include "MenuProducto.h"
 #include "ICollection/interfaces/IIterator.h" 
 
@@ -9,10 +8,11 @@ MenuProducto::MenuProducto(ProductoSimple* producto, Menu* menu, int cantidad){
 }
 
 void MenuProducto::incrementarCantidad(int cant) {
-    this->cantidad = this->cantidad += cant;
+    this->cantidad += cant;
+
 }
 
-bool MenuProducto::comprobarSiExisteProducto(Producto* p) {
+bool MenuProducto::comprobarSiExisteProducto(ProductoSimple* p) {
     return this->producto == p;
 }
 

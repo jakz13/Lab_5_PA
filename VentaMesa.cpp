@@ -9,8 +9,13 @@
 #include "Mozo.h"
 #include "ICollection/interfaces/ICollectible.h"
 #include <iostream>
+#include "Factura.h"
 
 // Constructor
+
+VentaMesa::~VentaMesa() {
+    // liberá recursos si es necesario
+}
 
 VentaMesa::VentaMesa(Mozo* mozo) {
     this->ventaProductos = new List();
@@ -22,6 +27,10 @@ void VentaMesa::agregarMesaAVenta(Mesa* mesa) {
     IKey* clave = new Integer (mesa->getNumero());
     this->mesas->add(clave,mesa);
     mesa->agregarVenta(this);
+}
+
+void Mesa::agregarVenta(VentaMesa* venta) {
+    // Implementación real aquí
 }
 
 /*void VentaMesa::agregarMesas(ICollection* nuevasMesas) {

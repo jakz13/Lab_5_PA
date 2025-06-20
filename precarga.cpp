@@ -1,5 +1,5 @@
 //archivo con la precarga del programa
-#include "precarga.h"
+/*
 #include "Sistema.h"
 #include "Producto.h"
 #include "Menu.h"
@@ -152,3 +152,5 @@ void precargarDatos(Sistema* sistema) {
     // 
     cout << "Datos de prueba cargados correctamente." << endl;
 }
+
+*/

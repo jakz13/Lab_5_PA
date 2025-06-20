@@ -1,16 +1,28 @@
-#pragma once
+#ifndef VENTAMESA_H
+#define VENTAMESA_H
+
 #include "Venta.h"
-#include "Mesa.h"
-#include "ICollection/collections/List.h"
+#include "ICollection/interfaces/ICollection.h"
 #include "ICollection/interfaces/IDictionary.h"
-#include "VentaProducto.h"
-#include "DtFecha.h"
-#include "DtProducto.h"
-#include "DtFactura.h"
-#include "Factura.h"
-#include "Mozo.h"
-#include  "ICollection/Integer.h"
+#include "ICollection/interfaces/ICollectible.h"
 #include "ICollection/interfaces/IKey.h"
+#include "ICollection/collections/List.h"
+#include "ICollection/Integer.h"
+#include "Mesa.h"
+#include "Producto.h"
+#include "DtFactura.h"
+#include "DtFecha.h"
+#include "Mozo.h"
+
+
+
+// Forward declarations
+class Mesa;
+class Producto;
+class DtFactura;
+class DtFecha;
+class Mozo;
+class Venta;
 
 class VentaMesa : public Venta {
 private:
@@ -32,3 +44,4 @@ public:
     virtual ~VentaMesa();
 };
 
+#endif // VENTAMESA_H

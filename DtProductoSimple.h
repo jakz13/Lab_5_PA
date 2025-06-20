@@ -1,9 +1,13 @@
-#pragma once
-#include "ICollection/collections/List.h"
+#ifndef DTPRODUCTOSIMPLE_H
+#define DTPRODUCTOSIMPLE_H
+
+#include "ICollection/interfaces/ICollectible.h"
 #include <string>
 #include "DtProducto.h"
-#include<iostream>
+#include <iostream>
 using namespace std;
+
+
 
 class DtProductoSimple : public DtProducto{
 private:
@@ -14,3 +18,5 @@ public:
    DtProductoSimple* getDatos();
 
 };
+
+#endif // DTPRODUCTOSIMPLE_H

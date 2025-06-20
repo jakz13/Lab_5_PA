@@ -1,17 +1,24 @@
-#pragma once
+#ifndef MENU_H
+#define MENU_H
+
 #include <string>
-#include "ICollection.h"
-#include "MenuProducto.h"
+#include "ICollection/interfaces/ICollection.h"
+#include "ICollection/interfaces/ICollectible.h"
 #include "Producto.h"
-#include "List.h"
-#include "IIterator.h"
-#include "DtProducto.h"
-#include "DtProductoConsumido.h"
-#include "DtFactura.h"
-#include "ProductoSimple.h" 
+#include "MenuProducto.h"
 #include "DtMenu.h"
-#include<iostream>
+#include "DtProducto.h"
+#include "ProductoSimple.h"
+#include "VentaProducto.h"
 using namespace std;
+
+
+// Forward declarations
+class MenuProducto;
+class ProductoSimple;
+class DtMenu;
+class DtProducto;
+
 
 class Menu : public Producto  {
 private:
@@ -29,3 +36,5 @@ public:
     void desvincularTodo();
     ICollection* getProductos();
 };
+
+#endif // MENU_H

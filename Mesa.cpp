@@ -1,4 +1,3 @@
-#pragma once
 #include "Mesa.h"
 
 Mesa::Mesa(int numero){

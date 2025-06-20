@@ -1,4 +1,9 @@
 #include "VentaProducto.h"
+#include "Producto.h"
+#include "Venta.h"
+#include "DtProductoConsumido.h"
+
+
 
 VentaProducto::VentaProducto(Producto* producto, Venta* venta, float precio, int cantidad){
     this->producto = producto;
@@ -24,9 +29,7 @@ bool VentaProducto::comprobarSiExisteProducto(Producto* p) const {
     return this->producto == p;
 }
 
-void VentaProducto::desvincularDeVenta() {
-    this->venta = nullptr;
-}
+
 
 
 DtProductoConsumido* VentaProducto::pedirDatos() const {
@@ -45,10 +48,18 @@ float VentaProducto::getPrecio() const{
     return this->precio;
 }
 
+/*
+void VentaProducto::desvincularDeVenta() {
+    this->venta = nullptr;
+}
+
+*/
 void VentaProducto::desvincularDeVenta() {
     this->venta->desvincular(this);
     this->venta = nullptr;
 }
+
+
 
 VentaProducto::~VentaProducto(){
     

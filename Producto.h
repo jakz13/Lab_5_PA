@@ -1,12 +1,19 @@
-#pragma once
-#include "ICollection/collections/List.h"
-#include <string>
-#include "DtProductoSimple.h"
-#include "ICollection/interfaces/ICollection.h"
-#include<iostream>
-#include "VentaProducto.h"
-using namespace std;
+#ifndef PRODUCTO_H
+#define PRODUCTO_H
 
+#include <string>
+#include "ICollection/interfaces/ICollectible.h"
+#include "ICollection/interfaces/ICollection.h"
+#include "VentaProducto.h"
+#include "DtProducto.h"
+
+
+// Forward declarations
+class DtProducto;
+class DtMenu;
+class DtMenuProducto;
+class VentaProducto;
+using namespace std;
 
 class Producto: public ICollectible {
 protected:
@@ -27,8 +34,8 @@ public:
     //virtual void crearVentaProducuto() = 0;
     bool comprobarSiEsProducto(Producto* p);
     void agregarVentaProducto(VentaProducto* vp);
+    ~Producto();
+    // DtProducto pedirDatos();
 
-    
-   // DtProducto pedirDatos();
-    
 };
+#endif // PRODUCTO_H

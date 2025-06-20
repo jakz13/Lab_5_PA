@@ -1,7 +1,11 @@
-#pragma once
+#ifndef FACTURA_H
+#define FACTURA_H
+
 #include <string>
 #include "DtFactura.h"
-#include "ICollection.h"
+#include "ICollection/interfaces/ICollectible.h"
+#include "ICollection/interfaces/ICollection.h"
+
 
 class Factura {
 private:
@@ -21,3 +25,5 @@ public:
     float getTotalDescuento ();
     ICollection* getProductos();
 };
+
+#endif // FACTURA_H

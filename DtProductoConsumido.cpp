@@ -16,9 +16,9 @@ string DtProductoConsumido::getDescripcion() const{
 }
 
 int DtProductoConsumido::getCantidad() const {
-    this->cantidad;
+    return this->cantidad;
 }
 
 float DtProductoConsumido::getPrecio() const {
-    this->precio;
+    return this->precio;
 }

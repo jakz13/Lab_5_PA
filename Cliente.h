@@ -1,6 +1,7 @@
-#pragma once
+#ifndef CLIENTE_H
+#define CLIENTE_H
 #include <string>
-#include<iostream>
+#include <iostream>
 #include "DtDireccion.h"
 #include "DtCliente.h"
 #include "ICollection/interfaces/ICollectible.h"
@@ -18,3 +19,5 @@ public:
     DtDireccion* getDireccion() const;
     DtCliente* getDatos();
 };
+
+#endif // CLIENTE_H

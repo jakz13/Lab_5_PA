@@ -1,4 +1,4 @@
-#ifndef STRINGKEY_H
+/*#ifndef STRINGKEY_H
 #define STRINGKEY_H
 
 #include "IKey.h"
@@ -17,7 +17,8 @@ public:
     bool operator==(const IKey& other) const;
     bool operator<(const IKey& other) const;
 
-    virtual ~StringKey() {}
+    virtual ~StringKey();
 };
 
 #endif
+*/

@@ -1,8 +1,19 @@
-#pragma once
+#ifndef VENTAPRODUCTO_H
+#define VENTAPRODUCTO_H
+
+#include "ICollection/interfaces/ICollectible.h"
+#include "ICollection/interfaces/ICollection.h"
 #include "Producto.h"
 #include "Venta.h"
 #include "DtProductoConsumido.h"
-#include "ICollection/interfaces/ICollection.h"
+
+
+// Forward declarations
+class Producto;
+class Venta;
+class DtProductoConsumido;
+
+
 
 class VentaProducto : public ICollectible {
 private:
@@ -25,3 +36,4 @@ public:
     Producto* getProducto();
 };
 
+#endif // VENTAPRODUCTO_H

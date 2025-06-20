@@ -1,7 +1,19 @@
-#pragma once
+#ifndef MESA_H
+#define MESA_H
+
 #include "ICollection/collections/List.h"
-#include "Venta.h"
+#include "ICollection/interfaces/ICollectible.h"
+#include "ICollection/interfaces/ICollection.h"
+
+#include "Mozo.h"
+#include "Producto.h"
 #include "DtMesa.h"
+
+// Forward declarations
+class VentaMesa;
+class Mozo;
+class Producto;
+class DtMesa;
 
 class Mesa : public ICollectible {
 private:
@@ -24,3 +36,4 @@ public:
 };
 
 
+#endif // MESA_H

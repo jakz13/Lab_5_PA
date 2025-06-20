@@ -1,5 +1,16 @@
-#pragma once
-#include "Sistema.h"
+#ifndef ISISTEMA_H
+#define ISISTEMA_H
+
+#include "ICollection/interfaces/ICollection.h"
+#include "ICollection/interfaces/ICollectible.h"
+#include "MedioTransporte.h"
+// Forward declarations
+class DtFactura;
+class DtFecha;
+class Producto;
+class DtCliente;
+class DtDireccion;
+
 
 #include <iostream>
 using namespace std;
@@ -48,3 +59,4 @@ class ISistema {
     virtual bool existeCliente (string telefono) = 0;
 };
 
+#endif // ISISTEMA_H

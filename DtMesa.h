@@ -1,6 +1,14 @@
-#pragma once
-#include "ICollection/collections/List.h"
-#include "Venta.h"
+#ifndef DTMESA_H
+#define DTMESA_H
+
+#include "ICollection/interfaces/ICollectible.h"
+#include "VentaMesa.h"
+#include "Mozo.h"
+#include "ICollection/interfaces/ICollection.h"
+
+// Forward declarations
+class VentaMesa;
+class Mozo;
 
 class DtMesa : public ICollectible {
 private:
@@ -12,3 +20,5 @@ public:
    int getNumero() const;
    VentaMesa* getVenta();
 };
+
+#endif // DTMESA_H

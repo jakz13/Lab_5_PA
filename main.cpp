@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Sistema.h"
-#include "ISistema.h"
+#include "Isistema.h"
 #include "ICollection/collections/List.h"
 #include "ICollection/interfaces/IDictionary.h"
 #include "ICollection/interfaces/ICollection.h"
@@ -11,6 +11,7 @@
 #include "DtCliente.h"
 #include "DtFactura.h"
 #include "Producto.h"
+#include "Factory.h"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ void mostrarMenu() {
 
 int main() {
     int opcion = 0;
-    Sistema* sistema = Sistema::getInstance();
+    ISistema* sistema = Factory::getInstance();
 
     do {
         mostrarMenu();
@@ -234,3 +235,4 @@ void menuMozo(ISistema* sistema) {
         }
     } while (opcion != 5);
 }
+

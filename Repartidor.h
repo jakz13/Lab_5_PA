@@ -1,9 +1,11 @@
-#pragma once
+#ifndef REPARTIDOR_H
+#define REPARTIDOR_H
+
 #include "Empleado.h"
 #include <string>
+
 #include "MedioTransporte.h"
-
-
+using namespace std;
 
 class Repartidor : public Empleado {
 private:
@@ -13,3 +15,4 @@ public:
     MedioTransporte* getMedio() const;
     
 };
+#endif // REPARTIDOR_H

@@ -1,10 +1,16 @@
 #ifndef MOZO_H
 #define MOZO_H
+
 #include "Empleado.h"
-#include "VentaMesa.h"
 #include "ICollection/collections/List.h"
 #include "ICollection/interfaces/IDictionary.h"
-using namespace std;
+#include "ICollection/interfaces/ICollection.h"
+#include "Mesa.h"
+#include "DtMesa.h"
+
+// Forward declarations
+class VentaMesa;
+class Mesa;
 
 class Mozo : public Empleado {
 private:

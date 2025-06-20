@@ -1,5 +1,9 @@
 #include "DtProducto.h"
 
+DtProducto::DtProducto() { }
+
+DtProducto::~DtProducto() { }
+
 DtProducto::DtProducto(std::string id, std::string descripcion, float precio){
     this->id = id;
     this->descripcion = descripcion;

@@ -1,6 +1,12 @@
-#pragma once
+#ifndef DTMENUPRODUCTO_H
+#define DTMENUPRODUCTO_H
+
+#include "ICollection/interfaces/ICollectible.h"
 #include "DtProducto.h"
-#include "DtMenu.h"
+// Forward declarations
+class DtProducto;
+class DtMenu;
+
 
 class DtMenuProducto : public ICollectible {
 private:
@@ -13,3 +19,4 @@ public:
    DtProducto* getProducto();
    DtMenu* getMenu();
 };
+#endif // DTMENUPRODUCTO_H
