@@ -4,7 +4,7 @@
 #include "ICollection/collections/List.h"
 #include "ICollection/collections/OrderedDictionary.h"
 
-Mozo::Mozo(int id, string nombre){
+Mozo::Mozo(string id, string nombre){
     this->id = id;
     this->nombre = nombre;
     this->cantMesas = 0;

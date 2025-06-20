@@ -11,13 +11,13 @@ using namespace std;
 
 class Empleado : public ICollectible{
 protected:
-    int id;
+    string id;
     string nombre;
 public:
     Empleado();
-    Empleado(int id, string nombre);
+    Empleado(string id, string nombre);
     string getNombre();
-    int getId();
+    string getId();
 
 };
 

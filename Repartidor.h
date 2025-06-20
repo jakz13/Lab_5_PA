@@ -11,7 +11,7 @@ class Repartidor : public Empleado {
 private:
     MedioTransporte* medio;
 public:
-    Repartidor(int id, string nombre, MedioTransporte* medio);
+    Repartidor(string id, string nombre, MedioTransporte* medio);
     MedioTransporte* getMedio() const;
     
 };

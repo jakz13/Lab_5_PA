@@ -57,7 +57,7 @@ private:
     Mesa* mesaTemporal;
     float descuento;
     DtFecha* fecha;
-    Mozo* mozoIniVenta;
+    Mozo* mozoTemporal;
     Mesa* mesaAgregarProd;
     Producto* prodAAgregar;
     Producto* quitar;
@@ -106,7 +106,7 @@ public:
     void seleccionarProducto(string id);
     void bajaProductoVenta();
     ICollection* ingresarMozo(string id);
-    void seleccionarMesa (ICollection* numero);
+    void seleccionarMesa (int numero);
     ICollection* listarMesas();
     void crearVentaMesa();
     void numeroMesaAgregar(int numero);

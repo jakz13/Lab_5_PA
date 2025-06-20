@@ -1,6 +1,6 @@
 #include "Empleado.h"
 
-Empleado::Empleado(int id, string nombre) {
+Empleado::Empleado(string id, string nombre) {
     this->nombre = nombre;
     this->id = id;
 }
@@ -8,7 +8,7 @@ Empleado::Empleado(int id, string nombre) {
 Empleado::Empleado(){
 
 }
-int Empleado::getId()  {
+string Empleado::getId()  {
     return this->id;
 }
 

@@ -235,33 +235,33 @@ void Sistema::bajaProductoVenta(){
 
 //INICIAR VENTA EN MESA
 
-/*ICollection* Sistema::ingresarMozo(string id){
+ICollection* Sistema::ingresarMozo(string id){
     IIterator* it = empleados->getIterator();
     while(it->hasCurrent()){
         Mozo* mozo = dynamic_cast<Mozo*>(it->getCurrent());
-        if (mozo->getId() == )
-    }
-    
-    ICollectible* m = empleados->(clave);
-    this->mozoIniVenta = mozo;
-    return mozo->getDatosMesa();
-}
+        if (mozo->getId() == id ){
 
-void Sistema:: seleccionarMesa(ICollection* numero){
-    /*IKey* clave;
-    IIterator* it = numero->getIterator();
-    while (it->hasCurrent()){
-        Integer* num = dynamic_cast<Integer*>(it->getCurrent());
-        if (num != nullptr){
-            clave = num;
-            mesasElegidas->add(mesas->find(clave));
+            this->mozoTemporal = mozo;
+            return mozo->getDatosMesa();
+
         }
-        
         it->next();
     }
-    delete clave;
-    delete it;*/
+    return nullptr;    
+}
 
+void Sistema:: seleccionarMesa(int num){
+
+    IIterator* it = mesas->getIterator();
+    while (it->hasCurrent()){
+        Mesa* mesa= dynamic_cast<Mesa*>(it->getCurrent());
+        if (mesa->getNumero() == num){
+            mesasElegidas->add(mesa);
+        }
+    
+    }
+    delete it;
+}
 
 ICollection* Sistema::listarMesas(){
     ICollection* SetDtMesas;
@@ -277,7 +277,7 @@ ICollection* Sistema::listarMesas(){
 }
 
 void Sistema::crearVentaMesa(){
-    Mozo * mozo= this->mozoIniVenta;
+    Mozo * mozo= this->mozoTemporal;
     VentaMesa* venMesa = new VentaMesa(mozo);
     IIterator* it = mesasElegidas->getIterator();
     while (it->hasCurrent()){
@@ -292,9 +292,15 @@ void Sistema::crearVentaMesa(){
 //AGREGAR PRODUCTO A UNA VENTA
 
 void Sistema::numeroMesaAgregar(int num){
-    /*IKey* clave = new Integer(num);
-    Mesa* mesa = dynamic_cast<Mesa*>(mesas->find(clave));
-    this->mesaAgregarProd = mesa;*/
+    IIterator* it = mesas->getIterator();
+    while (it->hasCurrent()){
+        Mesa* mesa = dynamic_cast<Mesa*>(it->getCurrent());
+        if (mesa->getNumero() == num){
+            this->mesaTemporal = mesa;
+        }
+        it->next();
+    }
+
 }
 
 void Sistema::agregarProducto(string id, int cant){
