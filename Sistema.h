@@ -54,7 +54,7 @@ private:
     Producto* bajarProducto;
     Menu* menuTemporal;
     ProductoSimple* prodTemporal;
-    Mesa* mesaAFacturar;
+    Mesa* mesaTemporal;
     float descuento;
     DtFecha* fecha;
     Mozo* mozoIniVenta;

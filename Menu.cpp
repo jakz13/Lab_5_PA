@@ -105,3 +105,7 @@ void Menu::desvincularTodo(){
     delete  it;
 
 }
+
+void Menu::implementarPrecio(int precio){
+    this->precio = precio;
+}

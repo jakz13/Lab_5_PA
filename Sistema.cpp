@@ -73,16 +73,20 @@ void  Sistema::seleccionarProducto(string codigo, int cant){
 }
 
 void Sistema::altamenu(){
+    int precio = 0, mprecio= 0;
     IIterator* it = productosElegidos->getIterator();
     while (it->hasCurrent()){
         DtProductoElegido* dt  = dynamic_cast<DtProductoElegido*>(it->getCurrent());
         MenuProducto* mp = new MenuProducto(dt->getProducto(), menuTemporal, dt->getCantidad());
+        mprecio = mp->getProducto()->getPrecio() * mp->getCantidad();
+        precio += mprecio;
         menuTemporal->getProductos()->add(mp);
         dt->getProducto()->getMenuProductos()->add(mp);
-
+        
         it->next();
     }
-
+    
+    menuTemporal->implementarPrecio(precio);
     this->productos->add( this->menuTemporal);
     this->menus->add(this->menuTemporal);
 
@@ -96,7 +100,7 @@ void Sistema::altamenu(){
         productosElegidos->remove(pr);
         delete pr;
 
-        it->hasCurrent();
+        it->next();
     }
     delete it;
 }
@@ -138,13 +142,14 @@ void Sistema::cancelarAltaProducto(){
 
 // FACTURACIÓN DE UNA VENTA
 void Sistema::numeroMesa(int numero){
-    /*IKey* clave = new Integer (numero);
-    if (mesas->member(clave)){
-        ICollectible* m = this->mesas->find(clave);
-        Mesa* mesa = dynamic_cast<Mesa*>(m);
-
-        this->mesaAFacturar = mesa;
-    }*/
+    IIterator* it = mesas->getIterator();
+    if (it->hasCurrent()){
+        Mesa* mesa = dynamic_cast<Mesa*>(it->getCurrent());
+        if(mesa->getNumero() == numero){
+            this->mesaTemporal= mesa;
+            return;
+        }
+    }
 }
 
 void Sistema::ingresarDescuento(float descuento){
@@ -160,15 +165,15 @@ DtFactura* Sistema::emitirFactura(){
     IIterator* it = ventasActivas->getIterator();
     while (it->hasCurrent()){
         VentaMesa* vtMesa = dynamic_cast<VentaMesa*>(it->getCurrent());
-        if(vtMesa->encontrarVenta(this->mesaAFacturar)){
+        if(vtMesa->encontrarVenta(this->mesaTemporal)){
             DtFact = vtMesa->facturar(fecha,descuento);
         }
 
         it->next();
     }    
+    mesaTemporal = nullptr;
     delete it;
     return DtFact;
-
 }
 
 
@@ -230,12 +235,16 @@ void Sistema::bajaProductoVenta(){
 
 //INICIAR VENTA EN MESA
 
-ICollection* Sistema::ingresarMozo(string id){/*
-    IKey* clave = new StringKey(id);
-    ICollectible* m = empleados->find(clave);
-    Mozo* mozo = dynamic_cast<Mozo*>(m);
+/*ICollection* Sistema::ingresarMozo(string id){
+    IIterator* it = empleados->getIterator();
+    while(it->hasCurrent()){
+        Mozo* mozo = dynamic_cast<Mozo*>(it->getCurrent());
+        if (mozo->getId() == )
+    }
+    
+    ICollectible* m = empleados->(clave);
     this->mozoIniVenta = mozo;
-    return mozo->getDatosMesa();*/
+    return mozo->getDatosMesa();
 }
 
 void Sistema:: seleccionarMesa(ICollection* numero){
@@ -252,7 +261,7 @@ void Sistema:: seleccionarMesa(ICollection* numero){
     }
     delete clave;
     delete it;*/
-}
+
 
 ICollection* Sistema::listarMesas(){
     ICollection* SetDtMesas;

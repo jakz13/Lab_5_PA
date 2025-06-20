@@ -35,6 +35,7 @@ public:
     void desvincularMP(MenuProducto* mp);
     void desvincularTodo();
     ICollection* getProductos();
+    void implementarPrecio(int precio);
 };
 
 #endif // MENU_H
