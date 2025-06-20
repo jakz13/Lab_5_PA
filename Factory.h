@@ -10,10 +10,11 @@ using namespace std;
 
 class Factory {
     public:
-        static ISistema * getSistema();
+        static ISistema * getInstance();
         Producto* crearProductoSimple(string id, string descripcion, float precio);
         Producto* crearMenu(string id, string descripcion);
 
 };
 
 #endif // FACTORY_H
+

@@ -1,13 +1,12 @@
 #ifndef DTMESA_H
 #define DTMESA_H
 
-#include "ICollection/collections/List.h"
-#include "ICollection/interfaces/ICollection.h"
 #include "ICollection/interfaces/ICollectible.h"
-#include "Venta.h"
+#include "VentaMesa.h"
+#include "Mozo.h"
+#include "ICollection/interfaces/ICollection.h"
 
 // Forward declarations
-class DtMesa;
 class VentaMesa;
 class Mozo;
 

@@ -2,20 +2,16 @@
 #define PRODUCTOSIMPLE_H
 
 #include <string>
-#include "MenuProducto.h"
 #include "Producto.h"
-#include "IIterator.h"
-#include "DtProducto.h"
-#include "DtProductoConsumido.h"
-#include "DtFactura.h"
-#include "VentaProducto.h"
-#include "ICollection/collections/List.h"
 #include "ICollection/interfaces/ICollectible.h"
 #include "ICollection/interfaces/ICollection.h"
-
-#include <iostream>
+#include "DtProductoSimple.h"
+#include "VentaProducto.h"
+#include "MenuProducto.h"
 using namespace std;
-
+// Forward declarations
+class MenuProducto;
+class DtProductoSimple;
 
 class ProductoSimple: public Producto {
 private:

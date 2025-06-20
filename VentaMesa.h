@@ -8,10 +8,21 @@
 #include "ICollection/interfaces/IKey.h"
 #include "ICollection/collections/List.h"
 #include "ICollection/Integer.h"
+#include "Mesa.h"
+#include "Producto.h"
+#include "DtFactura.h"
+#include "DtFecha.h"
+#include "Mozo.h"
+
+
 
 // Forward declarations
-class DtVentaMesa;
+class Mesa;
+class Producto;
+class DtFactura;
+class DtFecha;
 class Mozo;
+class Venta;
 
 class VentaMesa : public Venta {
 private:

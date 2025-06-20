@@ -1,4 +1,3 @@
-#pragma once
 #include "Mozo.h"
 #include "VentaMesa.h"
 #include "Venta.h"

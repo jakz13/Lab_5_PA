@@ -1,15 +1,11 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 #include <string>
-#include<iostream>
+#include <iostream>
 #include "DtDireccion.h"
 #include "DtCliente.h"
 #include "ICollection/interfaces/ICollectible.h"
 using namespace std;
-
-// Forward declarations
-class DtCliente;
-class DtDireccion;
 
 class Cliente :public ICollectible {
 private:

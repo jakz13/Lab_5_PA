@@ -1,8 +1,16 @@
 #ifndef ISISTEMA_H
 #define ISISTEMA_H
-#include "Sistema.h"
+
 #include "ICollection/interfaces/ICollection.h"
 #include "ICollection/interfaces/ICollectible.h"
+#include "MedioTransporte.h"
+// Forward declarations
+class DtFactura;
+class DtFecha;
+class Producto;
+class DtCliente;
+class DtDireccion;
+
 
 #include <iostream>
 using namespace std;

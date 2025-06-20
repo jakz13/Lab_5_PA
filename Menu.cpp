@@ -1,11 +1,9 @@
-#pragma once
 #include "Menu.h"
-#include "List.h"
 #include "IIterator.h"
 #include "DtMenu.h"
 #include "ICollection/interfaces/ICollection.h"
 #include "ICollection/interfaces/ICollectible.h"
-#include "List.h"
+#include "ICollection/collections/List.h"
 #include "MenuProducto.h"
 #include "Producto.h"
 
@@ -14,6 +12,12 @@ Menu::Menu(string codigo, string descripcion){
     this->descripcion = descripcion;
     this->menuProductos = new List();   
     this->precio = 0;
+}
+
+
+float Menu::getPrecio() {
+    // Devolvé el valor que corresponda
+    return this->precio; // asumido
 }
 
 Menu::~Menu() {

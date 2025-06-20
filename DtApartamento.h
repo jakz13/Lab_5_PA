@@ -1,10 +1,10 @@
 #ifndef DTAPARTAMENTO_H
 #define DTAPARTAMENTO_H
+
 #include <string>
-#include<iostream>
+#include <iostream>
 using namespace std;
 #include "DtDireccion.h"
-
 
 
 

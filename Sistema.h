@@ -1,18 +1,21 @@
 #ifndef SISTEMA_H
 #define SISTEMA_H
+
 #include "Producto.h"
 #include "Menu.h"
 #include "Venta.h"
 #include "Mesa.h"
+#include "VentaProducto.h"
+#include "VentaMesa.h"
 #include "Mozo.h"
 #include "Factura.h"
 #include "ICollection/interfaces/ICollection.h"
 #include "ICollection/interfaces/ICollectible.h"
-#include  "ICollection/collections/OrderedDictionary.h"
-#include  "ICollection/interfaces/StringKey.h"
+#include "ICollection/collections/OrderedDictionary.h"
+//#include "ICollection/interfaces/StringKey.h"
 #include "ICollection/interfaces/IDictionary.h"
 #include "ICollection/interfaces/IIterator.h"
-#include "Icollection/Integer.h"
+#include "ICollection/Integer.h"
 #include "DtDireccion.h"
 #include "Cliente.h"
 #include "MedioTransporte.h"
@@ -20,15 +23,18 @@
 #include "DtAsignacion.h"
 #include "DtProductoElegido.h"
 #include "ISistema.h"
-
-
+#include "DtProductoSimple.h"
+#include "DtFactura.h"
+#include "DtMenu.h"
+#include "DtCliente.h"
+#include "ProductoSimple.h"
 using namespace std;
 
 class Sistema : public ISistema {
 private:
     static Sistema * instance;
     static int contador;
-
+   
     Sistema();
     IDictionary* productos;
     ICollection* productosElegidos;
@@ -51,7 +57,6 @@ private:
     Mesa* mesaAFacturar;
     float descuento;
     DtFecha* fecha;
-    ICollection* mesasElegidas;
     Mozo* mozoIniVenta;
     Mesa* mesaAgregarProd;
     Producto* prodAAgregar;
@@ -65,7 +70,7 @@ private:
 public:
     
     ~Sistema();
-    static Sistema * getInstance();
+    
     // Métodos de casos de uso, alta, baja, buscar, etc.
     
     IDictionary* getProductos() const;
@@ -79,7 +84,7 @@ public:
     ICollection* getMesasElegidas() const;
     IDictionary* getEmpleados() const;
 
-
+    static Sistema * getInstance();
     void ingresarMenu(string codigo, string descripcion);
     ICollection* listarProductosSimples();
     void seleccionarProducto(string codigo, int cant);

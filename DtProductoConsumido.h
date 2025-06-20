@@ -1,9 +1,9 @@
 #ifndef DTPRODUCTOCONSUMIDO_H
 #define DTPRODUCTOCONSUMIDO_H
+
 #include <string>
-#include "ICollection/collections/List.h"
 #include "ICollection/interfaces/ICollectible.h"
-#include "ICollection/interfaces/ICollection.h"
+#include <string>
 #include <iostream>
 using namespace std;
 

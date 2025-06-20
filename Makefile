@@ -1,19 +1,27 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall
-SRC = $(wildcard *.cpp)
-OBJ = $(SRC:.cpp=.o)
-EXEC = restopub.exe
+CXXFLAGS = -std=c++11 -Wall -I./ICollection -I./ICollection/interfaces -I./ICollection/collections
 
-all: $(EXEC)
+# Buscar automáticamente todos los archivos fuente .cpp
+SRCS = $(wildcard *.cpp) \
+       $(wildcard ICollection/*.cpp) \
+       $(wildcard ICollection/collections/*.cpp) \
+       $(wildcard ICollection/interfaces/*.cpp)
 
-$(EXEC): $(OBJ)
-    $(CXX) $(CXXFLAGS) -o $@ $^
+# Generar los nombres de objetos a partir de los nombres de fuente
+OBJS = $(SRCS:.cpp=.o)
+
+PROG = restopub
+
+all: $(PROG)
+
+$(PROG): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 %.o: %.cpp
-    $(CXX) $(CXXFLAGS) -c $<
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-    del /Q *.o *.exe
+	rm -f $(OBJS) $(PROG)
 
 run: all
-    $(EXEC)
+	./$(PROG)

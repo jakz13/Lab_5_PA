@@ -1,15 +1,16 @@
 #ifndef DTPRODUCTO_H
 #define DTPRODUCTO_H
-#include "ICollection/collections/List.h"
+
 #include "ICollection/interfaces/ICollectible.h"
-#include "ICollection/interfaces/ICollection.h"
 #include <string>
-using namespace std;
 
 // Forward declarations
 class DtProducto;
 class DtMenu;
 class DtMenuProducto;
+
+#include <string>
+using namespace std;
 
 class DtProducto : public ICollectible{
 protected:
@@ -24,5 +25,6 @@ public:
     float getPrecio() const;
     virtual DtProducto* getDatos() = 0;
     virtual void imprimirProducto() = 0;
+    ~DtProducto();
 };
 #endif // DTPRODUCTO_H

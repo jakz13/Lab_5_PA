@@ -5,15 +5,18 @@
 #include "ICollection/interfaces/IIterator.h"
 #include "ICollection/interfaces/ICollection.h"
 #include "ICollection/interfaces/ICollectible.h"
+#include "Producto.h"
+#include "VentaProducto.h"
+#include "Factura.h"
+#include "DtFactura.h"
+
+
 
 // Forward declarations
 class Producto;
 class VentaProducto;
 class Factura;
 class DtFactura;
-class Mesa;
-class Mozo;
-class DtFecha;
 
 class Venta : public ICollectible {
 protected:

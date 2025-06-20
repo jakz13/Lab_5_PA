@@ -6,6 +6,7 @@
 #include "ICollection/interfaces/ICollectible.h"
 #include "ICollection/interfaces/ICollection.h"
 
+
 class Factura {
 private:
     static int contador;

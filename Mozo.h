@@ -5,8 +5,10 @@
 #include "ICollection/collections/List.h"
 #include "ICollection/interfaces/IDictionary.h"
 #include "ICollection/interfaces/ICollection.h"
+#include "Mesa.h"
+#include "DtMesa.h"
 
-// Forward declaration
+// Forward declarations
 class VentaMesa;
 class Mesa;
 

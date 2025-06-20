@@ -1,5 +1,5 @@
 #include "Factory.h"
 
-ISistema * Factory::getSistema() {
+ISistema * Factory::getInstance () {
     return Sistema::getInstance();
 }

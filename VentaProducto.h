@@ -1,17 +1,19 @@
 #ifndef VENTAPRODUCTO_H
 #define VENTAPRODUCTO_H
 
+#include "ICollection/interfaces/ICollectible.h"
+#include "ICollection/interfaces/ICollection.h"
+#include "Producto.h"
+#include "Venta.h"
+#include "DtProductoConsumido.h"
+
+
 // Forward declarations
 class Producto;
 class Venta;
 class DtProductoConsumido;
 
-#include "ICollection/interfaces/ICollectible.h"
-#include "Producto.h"
-#include "Venta.h"
 
-#include "DtProductoConsumido.h"
-#include "ICollection/interfaces/ICollection.h"
 
 class VentaProducto : public ICollectible {
 private:

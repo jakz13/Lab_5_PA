@@ -1,14 +1,12 @@
 #ifndef DTMENUPRODUCTO_H
 #define DTMENUPRODUCTO_H
-#include "DtProducto.h"
-#include "DtMenu.h"
-#include "ICollection/interfaces/ICollection.h"
+
 #include "ICollection/interfaces/ICollectible.h"
-
-
+#include "DtProducto.h"
 // Forward declarations
 class DtProducto;
 class DtMenu;
+
 
 class DtMenuProducto : public ICollectible {
 private:

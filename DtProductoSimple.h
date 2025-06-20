@@ -1,12 +1,10 @@
 #ifndef DTPRODUCTOSIMPLE_H
 #define DTPRODUCTOSIMPLE_H
 
-#include "ICollection/collections/List.h"
-#include "ICollection/interfaces/ICollection.h"
-#include "ICollection/interfaces/ICollectible.h"   
+#include "ICollection/interfaces/ICollectible.h"
 #include <string>
 #include "DtProducto.h"
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 

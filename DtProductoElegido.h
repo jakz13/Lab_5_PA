@@ -1,10 +1,13 @@
 #ifndef DTPRODUCTOELEGIDO_H
 #define DTPRODUCTOELEGIDO_H
-#include "ICollection/collections/List.h"
-#include "ICollection/interfaces/ICollection.h"
+
 #include "ICollection/interfaces/ICollectible.h"
 #include <string>
-#include "ProductoSimple.h"
+
+// Forward declaration
+class ProductoSimple;
+
+#include <string>
 #include<iostream>
 using namespace std;
 

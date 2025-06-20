@@ -1,20 +1,19 @@
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
 
-#include "ICollection/collections/List.h"
 #include <string>
-#include "DtProductoSimple.h"
-#include "ICollection/interfaces/ICollection.h"
 #include "ICollection/interfaces/ICollectible.h"
-#include<iostream>
+#include "ICollection/interfaces/ICollection.h"
 #include "VentaProducto.h"
-using namespace std;
+#include "DtProducto.h"
+
 
 // Forward declarations
 class DtProducto;
 class DtMenu;
 class DtMenuProducto;
 class VentaProducto;
+using namespace std;
 
 class Producto: public ICollectible {
 protected:
@@ -35,7 +34,7 @@ public:
     //virtual void crearVentaProducuto() = 0;
     bool comprobarSiEsProducto(Producto* p);
     void agregarVentaProducto(VentaProducto* vp);
-
+    ~Producto();
     // DtProducto pedirDatos();
 
 };

@@ -1,7 +1,9 @@
-#include "StringKey.h"
+/*#include "StringKey.h"
 #include <stdexcept>
 
 StringKey::StringKey(std::string k) : key(k) {}
+
+
 
 std::string StringKey::getKey() const {
     return key;
@@ -22,3 +24,6 @@ bool StringKey::operator<(const IKey& other) const {
         throw std::invalid_argument("Clave incompatible en operator<");
     return this->key < otherKey->key;
 }
+
+StringKey::~StringKey() { }
+*/

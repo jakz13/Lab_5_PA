@@ -1,3 +1,4 @@
+/*#include <cstring>
 #include <stddef.h>
 #include <stdexcept>
 #include <string.h>
@@ -35,3 +36,5 @@ const char *String::getValue() const
 String::~String(){
     delete[] s;
 }
+
+*/
