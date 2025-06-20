@@ -286,6 +286,8 @@ void Sistema::crearVentaMesa(){
 
         it->next();
     }
+    this->ventasActivas->add(venMesa);
+    this->ventas->add(venMesa);
     mozo->agregarVentaAMozo(venMesa);
 }
 
@@ -304,12 +306,16 @@ void Sistema::numeroMesaAgregar(int num){
 }
 
 void Sistema::agregarProducto(string id, int cant){
-/*    IKey* clave = new StringKey(id);
-    if (productos->member(clave)){
-        Producto* prod =dynamic_cast<Producto*>(productos->find(clave));
-        this->prodAAgregar= prod;
-        this->cantidad = cant;
-    }*/
+    IIterator* it = productos->getIterator();
+    while (it->hasCurrent()){
+        Producto* prod =dynamic_cast<Producto*>(it->getCurrent());
+        if (prod->getId() == id){
+            this->prodAAgregar = prod;
+            this->cantidad = cant;
+        }
+        it->next();
+    }
+
 }
 
 void Sistema::confirmarAgregar(){
