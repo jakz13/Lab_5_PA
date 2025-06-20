@@ -12,6 +12,8 @@ Factura::Factura(DtFecha* fecha, float totalFinal, float iva, float totalDescuen
     this->productos = productos;
 }
 
+
+
 int Factura:: getId(){
     return this->id;
 }

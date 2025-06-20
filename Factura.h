@@ -24,6 +24,7 @@ public:
     float getIva();
     float getTotalDescuento ();
     ICollection* getProductos();
+    
 };
 
 #endif // FACTURA_H

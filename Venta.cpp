@@ -97,3 +97,6 @@ void Venta::borrarProdVenta(Producto* p, int cantidad){
         }
     }
 }
+Factura* Venta:: getFactura(){
+    return factura;
+}

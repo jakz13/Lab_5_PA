@@ -10,7 +10,7 @@
 using namespace std;                                        
 
 
-class DtFactura {
+class DtFactura : public ICollection{
 private:
     int id;
     DtFecha* fecha;

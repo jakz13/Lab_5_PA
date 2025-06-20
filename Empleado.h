@@ -4,6 +4,7 @@
 #include "ICollection/collections/List.h"
 #include "ICollection/interfaces/ICollection.h"
 #include "ICollection/interfaces/ICollectible.h"
+#include "DtEmpleado.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -18,6 +19,7 @@ public:
     Empleado(string id, string nombre);
     string getNombre();
     string getId();
+    DtEmpleado* getDatos();
 
 };
 

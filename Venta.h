@@ -37,6 +37,7 @@ public:
     int getId();
     ICollection* datosVentaProducto();
     void agregarVentaProducto(VentaProducto* vp);
+    Factura* getFactura();
     //void agregarMesaAVenta(Mesa* mesa);
     //void asignarMozo(Mozo* mozo);
 

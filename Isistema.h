@@ -57,6 +57,8 @@ class ISistema {
     virtual void altaMozo() = 0;
     virtual ICollection* asignarMesasAMozo() = 0;
     virtual bool existeCliente (string telefono) = 0;
+    virtual ICollection* listarMozos() = 0;
+
 };
 
 #endif // ISISTEMA_H

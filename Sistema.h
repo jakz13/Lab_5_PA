@@ -1,6 +1,7 @@
 #ifndef SISTEMA_H
 #define SISTEMA_H
 
+#include "DtFecha.h"
 #include "Producto.h"
 #include "Menu.h"
 #include "Venta.h"
@@ -28,6 +29,8 @@
 #include "DtMenu.h"
 #include "DtCliente.h"
 #include "ProductoSimple.h"
+#include "DtMozo.h"
+#include "DtEmpleado.h"
 
 #include "Empleado.h"
 using namespace std;
@@ -129,6 +132,9 @@ public:
     void altaMozo();
     ICollection* asignarMesasAMozo();
     bool existeCliente (string telefono);
+
+    ICollection* listarMozos();
+    ICollection* ventasFacturadasdelMozo(string id, DtFecha* rango1, DtFecha* rango2);
 
     
     //FALTA AGREGAR MÁS FUNCIONES 

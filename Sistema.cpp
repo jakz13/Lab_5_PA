@@ -498,6 +498,47 @@ bool Sistema:: existeCliente(string telefono){
 
 
 
+//VENTAS DE UN MOZO
+
+ICollection* Sistema::listarMozos(){
+    ICollection*  SetDtMozo;
+    IIterator* it = mozos->getIterator();
+    while (it->hasCurrent()){
+        Empleado* mozo = dynamic_cast<Empleado*>(it->getCurrent());
+        
+        DtEmpleado* dtE = mozo->getDatos();
+        SetDtMozo->add (dtE);
+
+        it->next();
+    }
+    delete it;
+    return SetDtMozo;
+}        
+
+
+ICollection* Sistema::ventasFacturadasdelMozo(string id, DtFecha* rango1, DtFecha* rango2){
+    ICollection* setDataFacturas;
+    IIterator* it = ventasFacturadas->getIterator();
+    while (it->hasCurrent()){
+        VentaMesa* venta= dynamic_cast<VentaMesa*>(it->getCurrent());
+        if (venta->getMozo()->getId() == id){
+            if (venta->getFactura()->getFecha() < rango1 && rango2 > venta->getFactura()->getFecha()){
+                Factura* factura = venta->getFactura();
+                string nombre = venta->getMozo()->getNombre();
+               setDataFacturas->add(DtFactura  (factura->getId(),factura->getFecha(),factura->getTotal(),factura->getId(), factura->getTotalDescuento(),nombre)) ;
+                
+            }
+        }
+
+    }
+    DtFecha* fecha;
+    float totalFinal;
+    float iva;
+    float totalDescuento;
+    ICollectible* productos;
+    string nombreMozo;
+}
+
 
 
 
