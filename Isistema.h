@@ -36,7 +36,7 @@ class ISistema {
     virtual void seleccionarProducto(string id) = 0;
     virtual void bajaProductoVenta() = 0;
     virtual ICollection* ingresarMozo(string id) = 0;
-    virtual void seleccionarMesa (ICollection* numero) = 0;
+    virtual void seleccionarMesa (int numero) = 0;
     virtual ICollection* listarMesas() = 0;
     virtual void crearVentaMesa() = 0;
     virtual void numeroMesaAgregar(int numero) = 0;

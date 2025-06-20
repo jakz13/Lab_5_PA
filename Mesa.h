@@ -33,6 +33,7 @@ public:
     bool getasignada();
     void asinadaTrue();
     void agregarMozo(Mozo* mozo);
+    void sacarVenta();
 };
 
 

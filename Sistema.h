@@ -28,12 +28,14 @@
 #include "DtMenu.h"
 #include "DtCliente.h"
 #include "ProductoSimple.h"
+
+#include "Empleado.h"
 using namespace std;
 
 class Sistema : public ISistema {
 private:
     static Sistema * instance;
-    static int contador;
+    int contador;
    
     Sistema();
     ICollection* productos;

@@ -15,9 +15,9 @@ class Mesa;
 class Mozo : public Empleado {
 private:
     int cantMesas;
-    IDictionary* mesasAsignadas;
-    IDictionary* MesasDisponibles;
-    IDictionary* mesasActivas; // ICollection<Mesa*>
+    ICollection* mesasAsignadas;
+    ICollection* MesasDisponibles;
+    ICollection* mesasActivas; // ICollection<Mesa*>
     ICollection* ventasMesa; // ICollection<VentaMesa*>
 public:
     Mozo(string id ,string nombre);
@@ -26,9 +26,9 @@ public:
     void agregarVentaAMozo(VentaMesa* v);
     string nombreDelMozo() const;
     ICollection* getDatosMesa();
-    IDictionary* getMesasAsignadas();
-    IDictionary* getMesasDisponibles();
-    IDictionary* getMesasActivas();
+    ICollection* getMesasAsignadas();
+    ICollection* getMesasDisponibles();
+    ICollection* getMesasActivas();
     void incrementarCantidad(int cant);
 
 };

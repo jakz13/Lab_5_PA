@@ -24,8 +24,8 @@ VentaMesa::VentaMesa(Mozo* mozo) {
 
 // Agrega una mesa a la venta
 void VentaMesa::agregarMesaAVenta(Mesa* mesa) {
-    IKey* clave = new Integer (mesa->getNumero());
-    this->mesas->add(clave,mesa);
+    Mesa* m = mesa;
+    this->mesas->add(mesa);
     mesa->agregarVenta(this);
 }
 
@@ -68,11 +68,12 @@ Mozo* VentaMesa::getMozo() {
 // Busca una venta asociada a una mesa
 bool VentaMesa::encontrarVenta(Mesa* mesa)  {
     bool esta = false;
-    IKey* clave = new  Integer (mesa->getNumero());
-    if (this->mesas->member(clave)){
-        esta = true; // Devuelve esta venta si la mesa está asociada
+    IIterator* it = mesas->getIterator();
+    while (it->hasCurrent()){
+        Mesa* mesa = dynamic_cast<Mesa*>(it->getCurrent());
+        if (mesa->getNumero() ==  mesa->getNumero());
+            return esta;
     }
-    delete clave;
     return esta;
 }
 

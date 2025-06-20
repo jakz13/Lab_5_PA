@@ -26,7 +26,7 @@ class Venta;
 
 class VentaMesa : public Venta {
 private:
-    IDictionary* mesas;
+    ICollection* mesas;
     Mozo* mozo;
 public:
     VentaMesa(Mozo* mozo);

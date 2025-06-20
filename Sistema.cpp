@@ -2,7 +2,7 @@
 
 
 Sistema * Sistema::instance = NULL;
-int Sistema::contador = 0;
+
 
 Sistema::~Sistema() {
 
@@ -167,6 +167,9 @@ DtFactura* Sistema::emitirFactura(){
         VentaMesa* vtMesa = dynamic_cast<VentaMesa*>(it->getCurrent());
         if(vtMesa->encontrarVenta(this->mesaTemporal)){
             DtFact = vtMesa->facturar(fecha,descuento);
+            mesaTemporal->sacarVenta();
+            ventasActivas->remove(vtMesa);
+            ventasFacturadas->add(vtMesa);
         }
 
         it->next();
@@ -201,11 +204,15 @@ ICollection* Sistema::listarProductos(){
 }
 
 void Sistema::seleccionarProducto(string id){
-   /* IKey* clave = new StringKey(id);
-    if (productos->member(clave)){
-        ICollectible* p = productos->find(clave);
-        this->bajarProducto = dynamic_cast<Producto*>(p);
-    }*/
+    IIterator* it = productos->getIterator();
+    while (it->hasCurrent()){
+        Producto* prod = dynamic_cast<Producto*>(it->getCurrent());
+        if (prod->getId() == id){
+            this->bajarProducto = prod;
+            return;
+        }
+        it->next();
+    }
 }
 
 void Sistema::bajaProductoVenta(){
@@ -223,11 +230,16 @@ void Sistema::bajaProductoVenta(){
         if (dynamic_cast<ProductoSimple*>(prod)){
             ProductoSimple* prodSim = dynamic_cast<ProductoSimple*>(prod);
             prodSim->desvincularTodo();
+            productos->remove(prodSim);
+            productos->remove(prodSim);
         }
         else if (dynamic_cast<Menu*>(prod)){
             Menu* menu = dynamic_cast<Menu*>(prod);
             menu->desvincularTodo();
+            productos->remove(menu);
+            menus->remove(menu);
         }
+
         
     }
 
@@ -326,23 +338,34 @@ void Sistema::confirmarAgregar(){
 //QUITAR PRODUCTOS DE UNA VENTA
 
 ICollection* Sistema::numeroMesaQuitar(int numero){
-    /*IKey* clave = new Integer(numero);
-    if (mesas->member(clave)){
-        ICollectible* m = mesas->find(clave);
-        Mesa* mesa = dynamic_cast<Mesa*>(m);
-        this->mesaAgregarProd = mesa;
-        Venta* venta = mesa->encontrarVenta();
-        return venta->datosVentaProducto();
-    }*/
+    IIterator* it = mesas->getIterator();
+    while (it->hasCurrent()){
+        Mesa* mesa =dynamic_cast<Mesa*>(it->getCurrent());
+        if (mesa->getNumero()== numero){
+            this->mesaAgregarProd = mesa;
+            Venta* venta = mesa->encontrarVenta();
+            return venta->datosVentaProducto();
+
+        }
+       it->next();
+    }
 }
 
 void Sistema::quitarProducto(string id, int cantidad){
-    /*IKey* clave = new StringKey(id);
-    if(productos->member(clave)){
-        this->quitar =dynamic_cast<Producto*> (productos->find(clave));
-        this->cantidad = cantidad;
-        return;
-    }*/
+    IIterator* it = productos->getIterator();
+    while(it->hasCurrent()){
+        Producto* prod = dynamic_cast<Producto*>(it->getCurrent());
+        if (prod->getId()== id){
+            this->quitar = prod;
+            this->cantidad = cantidad;
+
+            delete it;
+            return;
+        }
+        it->next();
+    }
+    delete it;
+    return;
 }
 
 
@@ -359,11 +382,9 @@ DtCliente* Sistema:: ingresarDatosCliente(string telefono, string nombre, DtDire
 
 
 void Sistema:: altaCliente(){
-/*    IKey* clave = new StringKey(clienteTemporal->getTelefono());
-    clientes->add(clave, clienteTemporal);
+    clientes->add(clienteTemporal);
     clienteTemporal = nullptr;
-*/
-    }
+}
 
 void Sistema:: cancelarAltaCliente(){
     clienteTemporal = nullptr;
@@ -383,21 +404,19 @@ void Sistema::elegirTransporte(MedioTransporte* medio){
 }
 
 void Sistema::altaRepartidor(){
-    /*Repartidor* repartidor = new Repartidor(contador ++,stringTemporal, medioTemporal);
-    IKey* clave = new Integer (repartidor->getId());
-    empleados->add(clave, repartidor);
-    repartidores->add(clave,repartidor);
-    medioTemporal = nullptr;*/
+    Empleado* repartidor = new Empleado(contador ,stringTemporal, medioTemporal);
+    empleados->add(repartidor);
+    repartidores->add(repartidor);
+    medioTemporal = nullptr;
 }
 
 void Sistema::cancelarAltaRepartidor(){
     medioTemporal = nullptr;
 }
 void Sistema::altaMozo(){
-   /*Mozo* moz = new Mozo(contador++, stringTemporal);
-    IKey* clave = new Integer (moz->getId());
-    mozos->add(clave,moz);
-    empleados->add(clave, moz);*/
+    Mozo* moz = new Mozo(contador, stringTemporal);
+    mozos->add(moz);
+    empleados->add(moz);
 }
 
 //ASIGNAR MESAS A MOZO

@@ -44,3 +44,7 @@ Mozo* Mesa::getMozo(){
 void Mesa::asinadaTrue(){
     this->asignada = true;
 }
+
+void Mesa::sacarVenta(){
+    ventaMesaActiva = nullptr;
+}
