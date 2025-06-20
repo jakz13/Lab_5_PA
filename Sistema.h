@@ -36,19 +36,19 @@ private:
     static int contador;
    
     Sistema();
-    IDictionary* productos;
+    ICollection* productos;
     ICollection* productosElegidos;
     ICollection* productosSimples;
     ICollection* menus;
-    IDictionary* ventas;
+    ICollection* ventas;
     ICollection* ventasActivas;
     ICollection* ventasFacturadas;
-    IDictionary* mesas;
+    ICollection* mesas;
     ICollection* mesasElegidas;
-    IDictionary* empleados;
-    IDictionary* mozos;
-    IDictionary* repartidores;
-    IDictionary* clientes;
+    ICollection* empleados;
+    ICollection* mozos;
+    ICollection* repartidores;
+    ICollection* clientes;
 
 
     Producto* bajarProducto;
@@ -73,19 +73,23 @@ public:
     
     // Métodos de casos de uso, alta, baja, buscar, etc.
     
-    IDictionary* getProductos() const;
+    ICollection* getProductos() const;
     ICollection* getProductosElegidos() const;
     ICollection* getProductosSimples() const;
     ICollection* getMenus() const;
-    IDictionary* getVentas() const;
+    ICollection* getVentas() const;
     ICollection* getVentasActivas() const;
     ICollection* getVentasFacturadas() const;
-    IDictionary* getMesas() const;
+    ICollection* getMesas() const;
     ICollection* getMesasElegidas() const;
-    IDictionary* getEmpleados() const;
+    ICollection* getEmpleados() const;
 
     static Sistema * getInstance();
+
     void ingresarMenu(string codigo, string descripcion);
+
+
+    
     ICollection* listarProductosSimples();
     void seleccionarProducto(string codigo, int cant);
     void altamenu();

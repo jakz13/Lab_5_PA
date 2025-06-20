@@ -18,16 +18,16 @@ Sistema * Sistema::getInstance() {
     return instance;
 }
 Sistema::Sistema() {
-    productos = new OrderedDictionary();
+    productos = new List();
     productosElegidos = new List();
     productosSimples = new List();
     menus = new List();
-    ventas = new OrderedDictionary();
+    ventas = new List();
     ventasActivas = new List();
     ventasFacturadas = new List();
-    mesas = new OrderedDictionary();
+    mesas = new List();
     mesasElegidas = new List();   
-    empleados = new OrderedDictionary();
+    empleados = new List();
     bajarProducto = NULL;
 }
 
@@ -57,26 +57,22 @@ ICollection* Sistema::listarProductosSimples(){
     return resultado;
 }
 
-IDictionary* Sistema::getProductos() const{
+ICollection* Sistema::getProductos() const{
     return this->productos;
 }
 
 void  Sistema::seleccionarProducto(string codigo, int cant){
-    /*ICollection* DtProductosElegidos;
-    IKey* clave = new StringKey (codigo);
+    ICollection* DtProductosElegidos;
     IIterator* it = this->productos->getIterator();
-    if(productos->member(clave)){
-        ICollectible*  p = this->getProductos()->find(clave);
-        ProductoSimple* prod =dynamic_cast<ProductoSimple*>(p);
+    if(it->hasCurrent()){
+        ProductoSimple* prod =dynamic_cast<ProductoSimple*>(it->getCurrent());
         productosElegidos->add(new DtProductoElegido(prod,cant));
   
     }
-    delete clave;
-    delete it;*/
+    delete it;
 }
 
 void Sistema::altamenu(){
-    /*IKey* clave = new StringKey (menuTemporal->getId());
     IIterator* it = productosElegidos->getIterator();
     while (it->hasCurrent()){
         DtProductoElegido* dt  = dynamic_cast<DtProductoElegido*>(it->getCurrent());
@@ -87,7 +83,7 @@ void Sistema::altamenu(){
         it->next();
     }
 
-    this->productos->add(clave, this->menuTemporal);
+    this->productos->add( this->menuTemporal);
     this->menus->add(this->menuTemporal);
 
     this->menuTemporal = nullptr;
@@ -103,7 +99,6 @@ void Sistema::altamenu(){
         it->hasCurrent();
     }
     delete it;
-    delete clave;*/
 }
 
 void Sistema::cancelarAltaMenu(){
@@ -128,11 +123,11 @@ void Sistema::ingresarProducto(string codigo, string descripcion, float precio){
 }
 
 void Sistema::altaProducto(){
-/*    IKey* clave = new StringKey (prodTemporal->getId());
-    this->productos->add(clave, this->prodTemporal);
+
+    this->productos->add(this->prodTemporal);
     this->productosSimples->add(this->prodTemporal);
 
-    this->prodTemporal = nullptr;*/
+    this->prodTemporal = nullptr;
 }
 
 void Sistema::cancelarAltaProducto(){
@@ -143,13 +138,13 @@ void Sistema::cancelarAltaProducto(){
 
 // FACTURACIÓN DE UNA VENTA
 void Sistema::numeroMesa(int numero){
-    IKey* clave = new Integer (numero);
+    /*IKey* clave = new Integer (numero);
     if (mesas->member(clave)){
         ICollectible* m = this->mesas->find(clave);
         Mesa* mesa = dynamic_cast<Mesa*>(m);
 
         this->mesaAFacturar = mesa;
-    }
+    }*/
 }
 
 void Sistema::ingresarDescuento(float descuento){
@@ -244,7 +239,7 @@ ICollection* Sistema::ingresarMozo(string id){/*
 }
 
 void Sistema:: seleccionarMesa(ICollection* numero){
-    IKey* clave;
+    /*IKey* clave;
     IIterator* it = numero->getIterator();
     while (it->hasCurrent()){
         Integer* num = dynamic_cast<Integer*>(it->getCurrent());
@@ -256,7 +251,7 @@ void Sistema:: seleccionarMesa(ICollection* numero){
         it->next();
     }
     delete clave;
-    delete it;
+    delete it;*/
 }
 
 ICollection* Sistema::listarMesas(){
@@ -288,9 +283,9 @@ void Sistema::crearVentaMesa(){
 //AGREGAR PRODUCTO A UNA VENTA
 
 void Sistema::numeroMesaAgregar(int num){
-    IKey* clave = new Integer(num);
+    /*IKey* clave = new Integer(num);
     Mesa* mesa = dynamic_cast<Mesa*>(mesas->find(clave));
-    this->mesaAgregarProd = mesa;
+    this->mesaAgregarProd = mesa;*/
 }
 
 void Sistema::agregarProducto(string id, int cant){
@@ -310,14 +305,14 @@ void Sistema::confirmarAgregar(){
 //QUITAR PRODUCTOS DE UNA VENTA
 
 ICollection* Sistema::numeroMesaQuitar(int numero){
-    IKey* clave = new Integer(numero);
+    /*IKey* clave = new Integer(numero);
     if (mesas->member(clave)){
         ICollectible* m = mesas->find(clave);
         Mesa* mesa = dynamic_cast<Mesa*>(m);
         this->mesaAgregarProd = mesa;
         Venta* venta = mesa->encontrarVenta();
         return venta->datosVentaProducto();
-    }
+    }*/
 }
 
 void Sistema::quitarProducto(string id, int cantidad){
@@ -367,21 +362,21 @@ void Sistema::elegirTransporte(MedioTransporte* medio){
 }
 
 void Sistema::altaRepartidor(){
-    Repartidor* repartidor = new Repartidor(contador ++,stringTemporal, medioTemporal);
+    /*Repartidor* repartidor = new Repartidor(contador ++,stringTemporal, medioTemporal);
     IKey* clave = new Integer (repartidor->getId());
     empleados->add(clave, repartidor);
     repartidores->add(clave,repartidor);
-    medioTemporal = nullptr;
+    medioTemporal = nullptr;*/
 }
 
 void Sistema::cancelarAltaRepartidor(){
     medioTemporal = nullptr;
 }
 void Sistema::altaMozo(){
-    Mozo* moz = new Mozo(contador++, stringTemporal);
+   /*Mozo* moz = new Mozo(contador++, stringTemporal);
     IKey* clave = new Integer (moz->getId());
     mozos->add(clave,moz);
-    empleados->add(clave, moz);
+    empleados->add(clave, moz);*/
 }
 
 //ASIGNAR MESAS A MOZO
